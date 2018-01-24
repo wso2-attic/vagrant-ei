@@ -6,6 +6,10 @@
 2. Integrator
 3. MYSQL
 
+## Deployment Diagram
+![Alt text](deployment-diagram.png?raw=true "Title")
+
+
 Run the following command to deploy the servers.
 
 vagrant up
