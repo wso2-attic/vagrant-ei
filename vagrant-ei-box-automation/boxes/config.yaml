@@ -1,0 +1,28 @@
+# @Date:   2018-01-19T15:26:48+05:30
+# @Last modified time: 2018-01-19T15:28:11+05:30
+# @License: # Copyright 2018 WSO2, Inc. (http://wso2.com)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License
+
+---
+boxes:
+  -
+    output_box: mysql
+    base_box: ubuntu/trusty64
+    ip: 172.28.128.3
+    provisioner_script: mysql/provisioner/provisioner.sh
+  -
+    output_box: wso2ei
+    base_box: ubuntu/trusty64
+    ip: 172.28.128.4
+    provisioner_script: base/provisioner/provisioner.sh
