@@ -1,8 +1,4 @@
-# @Author: ching
-# @Date:   2018-01-23T18:06:22+05:30
-# @Last modified by:   ching
-# @Last modified time: 2018-01-23T18:51:43+05:30
-# @License: # Copyright 2018 WSO2, Inc. (http://wso2.com)
+# Copyright 2018 WSO2, Inc. (http://wso2.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

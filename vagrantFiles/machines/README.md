@@ -30,20 +30,20 @@ Following are the 3 profiles.
   2. Integrator, Broker, Analytics, and MySQL
   3. Integrator, Broker, Business-process, Analytics, and MySQL
 
-#### 5. To select a profile, 
+#### 5. To select a profile,
 
 ##### First profile
 
 ###### Move to `integrator-analytics` folder.
 
     cd integrator-analytics
-    
+
 ##### Second profile
 
 ###### Move to `integrator-broker-analytics` folder.
 
     cd integrator-broker-analytics
-    
+
 ##### Third profile
 
 ###### Move to `integrator-broker-bps-analytics` folder.
