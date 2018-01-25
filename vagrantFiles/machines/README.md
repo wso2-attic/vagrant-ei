@@ -12,19 +12,17 @@ Requires minimum of 16GB ram.
 
 ## How to run the Vagrantfile
 
-##### 1. Checkout this repository into your local machine using the following Git command.
+#### 1. Checkout this repository into your local machine using the following Git command.
 ```
 git clone https://github.com/wso2-incubator/vagrant-is.git
 ```
-##### 2. Build and add the Vagrant boxes for external MySQL database, WSO2 Identity Server and WSO2 Identity Server Analytics using the Vagrant box automation resources.
+#### 2. Build and add the Vagrant boxes for external MySQL database and WSO2 Enterprise Integrator using the Vagrant box automation resources.
 
-##### 3. Move to `machines` folder.
+#### 3. Move to `machines` folder.
 
     cd machines
 
-##### 4. Spawn up the Vagrant setup.
-
-The WSO2 EI considers 3 deployment profiles.
+#### 4.The WSO2 EI considers 3 deployment profiles..
 
 Following are the 3 profiles.
 
@@ -32,10 +30,26 @@ Following are the 3 profiles.
   2. Integrator, Broker, Analytics, and MySQL
   3. Integrator, Broker, Business-process, Analytics, and MySQL
 
-Using the following command, a specific profile will be spawned
+#### 5. To select a profile, 
 
-    profile=# vagrant up
+##### First profile
 
-Eg - For profile 3 the command is as follows
+###### Move to `integrator-analytics` folder.
 
-    profile=3 vagrant up
+    cd integrator-analytics
+    
+##### Second profile
+
+###### Move to `integrator-broker-analytics` folder.
+
+    cd integrator-broker-analytics
+    
+##### Third profile
+
+###### Move to `integrator-broker-bps-analytics` folder.
+
+    cd integrator-broker-bps-analytics
+
+#### Run the selected profile using the following command.
+
+    vagrant up
