@@ -10,6 +10,6 @@
 ![Alt text](deployment-diagram.png?raw=true "Title")
 
 
-Run the following command to deploy the servers.
+Run the selected profile using the following command.
 
-vagrant up
+    vagrant up
