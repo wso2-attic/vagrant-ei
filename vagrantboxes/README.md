@@ -9,7 +9,7 @@ as WSO2 Vagrant resources use Oracle VM VirtualBox, as the default provider.
 Virtualization should be enabled in the BIOS before building the boxes.
 ## How to build the Vagrant boxes
 
-![Vagrant box build process]
+Vagrant box build process
 
 ##### 1. Checkout this repository into your local machine using the following Git command.
 ```
