@@ -16,9 +16,9 @@ Virtualization should be enabled in the BIOS before building the boxes.
 git clone https://github.com/wso2/vagrant-ei
 ```
 
-##### 2. Move to `boxes` folder.
+##### 2. Move to `vagrantboxes` folder.
 
-    cd boxes
+    cd vagrantboxes
 
 ##### 3. Execute the build.sh shell script.
 

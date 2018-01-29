@@ -18,9 +18,9 @@ git clone https://github.com/wso2-incubator/vagrant-is.git
 ```
 #### 2. Build and add the Vagrant boxes for external MySQL database and WSO2 Enterprise Integrator using the Vagrant box automation resources.
 
-#### 3. Move to `machines` folder.
+#### 3. Move to `vagrantfiles` folder.
 
-    cd machines
+    cd vagrantfiles
 
 #### 4.The WSO2 EI considers 3 deployment profiles..
 
