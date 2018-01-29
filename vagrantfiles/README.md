@@ -1,4 +1,4 @@
-# Vagrantfile for WSO2 Enterprise integrator
+# Vagrantfile for WSO2 Enterprise Integrator
 
 This section defines the procedure to execute run Vagrant resources for a specific profile of the WSO2 Enterprise Integrator
 
