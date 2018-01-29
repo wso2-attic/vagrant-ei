@@ -14,7 +14,7 @@ Requires minimum of 16GB ram.
 
 #### 1. Checkout this repository into your local machine using the following Git command.
 ```
-git clone https://github.com/wso2-incubator/vagrant-is.git
+git clone https://github.com/wso2/vagrant-ei
 ```
 #### 2. Build and add the Vagrant boxes for external MySQL database and WSO2 Enterprise Integrator using the Vagrantboxes resources.
 
