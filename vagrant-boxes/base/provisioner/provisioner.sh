@@ -1,6 +1,4 @@
-# @Date:   2018-01-22T14:26:52+05:30
-# @Last modified time: 2018-01-24T14:20:17+05:30
-# @License: # Copyright 2018 WSO2, Inc. (http://wso2.com)
+# Copyright 2018 WSO2, Inc. (http://wso2.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

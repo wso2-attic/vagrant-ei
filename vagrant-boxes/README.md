@@ -13,7 +13,7 @@ Virtualization should be enabled in the BIOS before building the boxes.
 
 ##### 1. Checkout this repository into your local machine using the following Git command.
 ```
-git clone https://github.com/ctienshi/vagrant-apim
+git clone https://github.com/wso2/vagrant-ei
 ```
 
 ##### 2. Move to `boxes` folder.
