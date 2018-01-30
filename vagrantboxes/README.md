@@ -13,7 +13,7 @@ Vagrant box build process
 
 ##### 1. Checkout this repository into your local machine using the following Git command.
 ```
-git clone https://github.com/wso2/vagrant-ei
+git clone https://github.com/wso2/vagrant-ei.git
 ```
 
 ##### 2. Move to `vagrantboxes` folder.
