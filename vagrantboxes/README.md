@@ -16,7 +16,10 @@ Virtualization should be enabled in the BIOS before building the boxes.
 git clone https://github.com/wso2/vagrant-ei.git
 ```
 **2. Download**
-	[WSO2 Enterprise Integrator 6.1.1](https://wso2.com/integration#download), [JDK 8u144-linux-x64.tar](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) **and**  [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) **and copy them to the "files' folder.**
+	[WSO2 Enterprise Integrator 6.1.1](https://wso2.com/integration#download), [JDK 8u144-linux-x64.tar](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) **and**  [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) **and copy them to the following path.**
+
+
+    ~/vagrantboxes/files/
 
 **3. Move to `vagrantboxes` folder.**
 
