@@ -22,9 +22,7 @@ git clone https://github.com/wso2/vagrant-ei.git
 
     cd vagrantfiles
 
-4. The WSO2 EI considers 3 deployment profiles..
-
-**Following are the 3 profiles.**
+**The WSO2 EI considers 3 deployment profiles. Following are the 3 profiles.**
 
   1. Integrator, Analytics, and MySQL
   2. Integrator, Broker, Analytics, and MySQL
