@@ -21,9 +21,9 @@ git clone https://github.com/wso2/vagrant-ei.git
 
     ~/vagrantboxes/files/
 
-3. Move to `vagrantboxes` folder.
+3. Move to `boxes` folder.
 
-    cd vagrantboxes
+    cd boxes
 
 4. Execute the build.sh shell script.
 
