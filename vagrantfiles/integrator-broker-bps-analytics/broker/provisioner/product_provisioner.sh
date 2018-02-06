@@ -23,6 +23,7 @@ NODE_IP=$(/sbin/ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $
 
 # copy files with configuration changes
 echo "Copying the files with configuration changes to the server pack..."
+
 cp -TRv ${CONFIGURATIONS}/conf/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/conf/
 if [ "$?" -eq "0" ];
 then
@@ -30,6 +31,7 @@ then
 else
   echo "Failed to copy the configuration files"
 fi
+
 cp -TRv ${CONFIGURATIONS}/repository/resources/security/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/repository/resources/security/
 if [ "$?" -eq "0" ];
 then

@@ -22,7 +22,9 @@ CONFIGURATIONS=${DEFAULT_MOUNT}/integrator
 NODE_IP=$(/sbin/ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 
 # copy files with configuration changes
+
 echo "Copying the files with configuration changes to the server pack..."
+
 cp -TRv ${CONFIGURATIONS}/conf/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/conf/
 if [ "$?" -eq "0" ];
 then
