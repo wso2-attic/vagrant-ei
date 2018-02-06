@@ -13,8 +13,6 @@
 # limitations under the License
  -->
 
-
-
 <datasources-configuration xmlns:svns="http://org.wso2.securevault/configuration">
 
     <providers>

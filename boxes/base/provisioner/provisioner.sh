@@ -111,9 +111,6 @@ else
   echo "Failed to copy the org.wso2.securevault-1.0.0-wso2v2 to the server pack."
 fi
 
-
-
-
 # set ownership of the working directory to the default ssh user and group
 chown -R ${DEFAULT_USER}:${DEFAULT_USER} ${WORKING_DIRECTORY}
 
