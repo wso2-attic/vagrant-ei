@@ -1,6 +1,6 @@
 # Vagrantfile for WSO2 Enterprise Integrator
 
-This section defines the procedure to execute run Vagrant resources for a specific profile of the WSO2 Enterprise Integrator
+This section defines the procedure to run Vagrant resources for a specific profile of the WSO2 Enterprise Integrator
 
 Please note that in order to run these Vagrant resources use, you need to install
 [Oracle VM VirtualBox](http://www.oracle.com/technetwork/server-storage/virtualbox/downloads/index.html),
