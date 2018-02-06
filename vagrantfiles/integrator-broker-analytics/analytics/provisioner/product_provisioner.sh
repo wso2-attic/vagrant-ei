@@ -18,26 +18,18 @@ WSO2_SERVER_VERSION=6.1.1
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
 DEFAULT_MOUNT=/vagrant
-CONFIGURATIONS=${DEFAULT_MOUNT}/analytics/confs
+CONFIGURATIONS=${DEFAULT_MOUNT}/analytics
 NODE_IP=$(/sbin/ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 
 # copy files with configuration changes
 echo "Copying the files with configuration changes to the server pack..."
 
-cp -TRv ${CONFIGURATIONS}/repository/conf/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/analytics/conf/
+cp -TRv ${CONFIGURATIONS}/conf/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/analytics/conf/
 if [ "$?" -eq "0" ];
 then
   echo "Successfully copied the configuration files."
 else
   echo "Failed to copy the configuration files"
-fi
-
-cp -TRv ${CONFIGURATIONS}/repository/deployment/server/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/analytics/repository/deployment/server/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Server files."
-else
-  echo "Failed to copy the deployment Server files"
 fi
 
 export JAVA_HOME

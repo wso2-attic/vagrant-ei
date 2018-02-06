@@ -18,24 +18,18 @@ WSO2_SERVER_VERSION=6.1.1
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
 DEFAULT_MOUNT=/vagrant
-CONFIGURATIONS=${DEFAULT_MOUNT}/broker/confs
+CONFIGURATIONS=${DEFAULT_MOUNT}/broker
 NODE_IP=$(/sbin/ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 
 # copy files with configuration changes
 echo "Copying the files with configuration changes to the server pack..."
-cp -TRv ${CONFIGURATIONS}/repository/conf/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/conf/
+
+cp -TRv ${CONFIGURATIONS}/conf/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/conf/
 if [ "$?" -eq "0" ];
 then
   echo "Successfully copied the configuration files."
 else
   echo "Failed to copy the configuration files"
-fi
-cp -TRv ${CONFIGURATIONS}/repository/deployment/server/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/repository/deployment/server/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Server files."
-else
-  echo "Failed to copy the deployment Server files"
 fi
 
 export JAVA_HOME
@@ -43,6 +37,7 @@ export JAVA_HOME
 # start the WSO2 product pack as a background service
 echo "Starting ${WSO2_SERVER}-${WSO2_SERVER_VERSION}-broker..."
 sh ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/bin/wso2server.sh start
+
 sleep 10
 
 # tail the WSO2 product server startup logs until the server startup confirmation is logged
