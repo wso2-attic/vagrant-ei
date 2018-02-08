@@ -32,7 +32,7 @@ Requires minimum of 16GB ram.
   2. Integrator, Broker, Analytics, and MySQL
   3. Integrator, Broker, Business-process, Analytics, and MySQL
 
-## To select a profile combination,
+## Select a profile combination
 
 ### Integrator with Analytics
  
