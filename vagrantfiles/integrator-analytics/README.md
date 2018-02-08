@@ -1,16 +1,10 @@
-# Profile 1
-
-## This profile contains the following components of the WSO2-EI
-
-1. Analytics
-2. Integrator
-3. MYSQL
+# WSO2 Enterprise Integrator <br> For Integration Use-cases With Analytics Support
 
 ## Deployment Diagram
 ![Alt text](deployment-diagram.png?raw=true "Title")
 
+Run the selected profile combination using the following command.
 
-Run the selected profile using the following command.
 ```
     vagrant up
 ```
@@ -18,7 +12,7 @@ Run the selected profile using the following command.
 Access management console via a web browser :
 
 ```
-For Integrator - https://172.28.128.7:9443/carbon
-For Analytics - https://172.28.128.4:9444/carbon
+    For Integrator - https://172.28.128.7:9443/carbon
+    For Analytics - https://172.28.128.4:9444/carbon
 
 ```
