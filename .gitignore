@@ -4,6 +4,9 @@
 # Log file
 *.log
 
+# Vagrant files
+*/.vagrant/
+
 # BlueJ files
 *.ctxt
 
