@@ -27,8 +27,6 @@ SOFTWARE_DISTRIBUTIONS=${DEFAULT_MOUNT}/files
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java
 DEFAULT_USER=vagrant
-
-
 # operate in anti-fronted mode with no user interaction
 export DEBIAN_FRONTEND=noninteractive
 
@@ -68,23 +66,17 @@ if test -d ${JAVA_HOME}; then
   echo "Successfully set up Java"
 fi
 
-# unpack the WSO2 product pack to the working directory
-echo "Setting up the ${WSO2_SERVER}-${WSO2_SERVER_VERSION} server..."
+# moving the WSO2 product pack to the working directory
+echo "Moving the ${WSO2_SERVER_PACK} to the directory: ${WORKING_DIRECTORY}..."
 if test ! -d ${WSO2_SERVER}-${WSO2_SERVER_VERSION}; then
-  unzip -q ${DEFAULT_MOUNT}/files/${WSO2_SERVER_PACK} -d ${WORKING_DIRECTORY}
+  mv ${DEFAULT_MOUNT}/files/${WSO2_SERVER_PACK} ${WORKING_DIRECTORY}
+  echo "Successfully moved ${WSO2_SERVER_PACK} to ${WORKING_DIRECTORY}"
 fi
-echo "Successfully set up ${WSO2_SERVER}-${WSO2_SERVER_VERSION} server"
 
 # add the MySQL driver
-echo "Copying the MySQL driver to the server pack..."
-cp ${SOFTWARE_DISTRIBUTIONS}/${MYSQL_CONNECTOR} ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/${MYSQL_CONNECTOR}
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the MySQL driver to the server pack."
-else
-  echo "Failed to copy the MySQL driver to the server pack."
-fi
-
+echo "Copying the MySQL driver to the ${WORKING_DIRECTORY}"
+cp ${SOFTWARE_DISTRIBUTIONS}/${MYSQL_CONNECTOR} ${WORKING_DIRECTORY}
+echo "Successfully copied the MySQL driver to the server pack."
 # set ownership of the working directory to the default ssh user and group
 chown -R ${DEFAULT_USER}:${DEFAULT_USER} ${WORKING_DIRECTORY}
 

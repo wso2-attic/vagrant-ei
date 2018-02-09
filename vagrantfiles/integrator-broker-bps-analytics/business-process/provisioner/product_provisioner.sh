@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Copyright 2018 WSO2, Inc. (http://wso2.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +20,26 @@ WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
 DEFAULT_MOUNT=/vagrant
 CONFIGURATIONS=${DEFAULT_MOUNT}/business-process
+WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
+MYSQL_CONNECTOR=mysql-connector-java-5.1.*-bin.jar
 NODE_IP=$(/sbin/ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
+
+# unpack the WSO2 product pack to the working directory
+echo "Setting up the ${WSO2_SERVER}-${WSO2_SERVER_VERSION} server..."
+if test ! -d ${WSO2_SERVER}-${WSO2_SERVER_VERSION}; then
+  unzip -q ${WORKING_DIRECTORY}/${WSO2_SERVER_PACK} -d ${WORKING_DIRECTORY}
+fi
+echo "Successfully set up ${WSO2_SERVER}-${WSO2_SERVER_VERSION} server"
+
+# add the MySQL driver
+echo "Copying the MySQL driver to the server pack..."
+cp ${WORKING_DIRECTORY}/${MYSQL_CONNECTOR} ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/${MYSQL_CONNECTOR}
+if [ "$?" -eq "0" ];
+then
+  echo "Successfully copied the MySQL driver to the server pack."
+else
+  echo "Failed to copy the MySQL driver to the server pack."
+fi
 
 # copy files with configuration changes
 echo "Copying the files with configuration changes to the server pack..."
@@ -38,6 +58,33 @@ then
   echo "Successfully copied the deployment Server files."
 else
   echo "Failed to copy the deployment Server files"
+fi
+
+echo "Copying ande-client.jar"
+cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/andes-client-3.2.19.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/andes-client-3.2.19.jar
+if [ "$?" -eq "0" ];
+then
+  echo "Successfully copied the ande-client.jar to the server pack."
+else
+  echo "Failed to copy the ande-client.jar to the server pack."
+fi
+
+echo "Copying geronimo-jms_1.1_spec-1.1.0.wso2v1.jar"
+cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/geronimo-jms_1.1_spec-1.1.0.wso2v1.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/geronimo-jms_1.1_spec-1.1.0.wso2v1.jar
+if [ "$?" -eq "0" ];
+then
+  echo "Successfully copied the geronimo-jms_1.1_spec-1.1.0.wso2v1 to the server pack."
+else
+  echo "Failed to copy the geronimo-jms_1.1_spec-1.1.0.wso2v1 to the server pack."
+fi
+
+echo "Copying org.wso2.securevault-1.0.0-wso2v2.jar"
+cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/org.wso2.securevault-1.0.0-wso2v2.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/org.wso2.securevault-1.0.0-wso2v2.jar
+if [ "$?" -eq "0" ];
+then
+  echo "Successfully copied the org.wso2.securevault-1.0.0-wso2v2 to the server pack."
+else
+  echo "Failed to copy the org.wso2.securevault-1.0.0-wso2v2 to the server pack."
 fi
 
 export JAVA_HOME
