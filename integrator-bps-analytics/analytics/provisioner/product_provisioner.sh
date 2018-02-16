@@ -60,6 +60,33 @@ else
   echo "Failed to copy the deployment security files"
 fi
 
+echo "Copying ande-client.jar"
+cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/andes-client-3.2.19.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/andes-client-3.2.19.jar
+if [ "$?" -eq "0" ];
+then
+  echo "Successfully copied the ande-client.jar to the server pack."
+else
+  echo "Failed to copy the ande-client.jar to the server pack."
+fi
+
+echo "Copying geronimo-jms_1.1_spec-1.1.0.wso2v1.jar"
+cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/geronimo-jms_1.1_spec-1.1.0.wso2v1.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/geronimo-jms_1.1_spec-1.1.0.wso2v1.jar
+if [ "$?" -eq "0" ];
+then
+  echo "Successfully copied the geronimo-jms_1.1_spec-1.1.0.wso2v1 to the server pack."
+else
+  echo "Failed to copy the geronimo-jms_1.1_spec-1.1.0.wso2v1 to the server pack."
+fi
+
+echo "Copying org.wso2.securevault-1.0.0-wso2v2.jar"
+cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/org.wso2.securevault-1.0.0-wso2v2.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/org.wso2.securevault-1.0.0-wso2v2.jar
+if [ "$?" -eq "0" ];
+then
+  echo "Successfully copied the org.wso2.securevault-1.0.0-wso2v2 to the server pack."
+else
+  echo "Failed to copy the org.wso2.securevault-1.0.0-wso2v2 to the server pack."
+fi
+
 export JAVA_HOME
 
 # start the WSO2 product pack as a background service
