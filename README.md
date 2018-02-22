@@ -24,11 +24,12 @@ Requires minimum of 16GB ram.
     cd vagrant-ei
 ```
 
-**The WSO2 EI considers 3 deployment profile combinations.**
+**The WSO2 EI considers 4 deployment profile combinations.**
 
   1. Integrator, Analytics, and MySQL
   2. Integrator, Broker, Analytics, and MySQL
-  3. Integrator, Broker, Business-process, Analytics, and MySQL
+  3. Integrator, Business-process, Analytics, and MySQL
+  4. Integrator, Broker, Business-process, Analytics, and MySQL
 
 ## Select a profile combination
 
@@ -46,6 +47,14 @@ Move to `integrator-broker-analytics` folder.
 
 ```
     cd integrator-broker-analytics
+```
+
+### Integrator and Business Process with Analytics
+
+Move to `integrator-bps-analytics` folder.
+
+```
+    cd integrator-bps-analytics
 ```
 
 ### Integrator, Broker and Business-process with analytics
