@@ -48,6 +48,7 @@ if test ! -d ${WUM_HOME}; then
   tar -xf ${WORKING_DIRECTORY}/${WUM_ARCHIVE} -C ${WUM_HOME} --strip-components=1
   echo "Successfully set up WUM."
 fi
+
 # unpack the WSO2 product pack to the working directory
 echo "Setting up the ${WSO2_SERVER}-${WSO2_SERVER_VERSION} server..."
 if test ! -d ${WSO2_SERVER}-${WSO2_SERVER_VERSION}; then
