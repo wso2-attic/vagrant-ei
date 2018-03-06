@@ -28,6 +28,9 @@ JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
 WUM_ARCHIVE=wum-1.0-linux-x64.tar.gz
 NODE_IP=$(/sbin/ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 
+# operating in non-interactive mode
+export DEBIAN_FRONTEND=noninteractive
+
 # install utility software
 echo "Installing software utilities."
 apt-get install unzip
