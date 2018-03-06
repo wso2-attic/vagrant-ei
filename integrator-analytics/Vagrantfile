@@ -34,6 +34,13 @@ Vagrant.configure(2) do |config|
       # use private networking (recommended for multi-machine scenarios)
       server_config.vm.network :private_network, ip: server['ip']
 
+      #forwarding ports to access the server via localhost
+      if server['ports']
+        server['ports'].each do |port|
+          server_config.vm.network "forwarded_port", guest: port, host: port
+        end
+      end
+
       memory = server['ram'] ? server['ram'] : 2048
       cpu = server['cpu'] ? server['cpu'] : 1
       # setup VirtualBox specific provider configurations

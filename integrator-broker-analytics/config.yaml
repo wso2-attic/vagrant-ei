@@ -25,6 +25,8 @@ servers:
     hostname: analytics
     box: wso2ei
     ip: 172.28.128.4
+    ports:
+      - 9444
     ram: 2048
     cpu: 1
     provisioner_script: analytics/provisioner/product_provisioner.sh
@@ -33,6 +35,8 @@ servers:
     hostname: broker
     box: wso2ei
     ip: 172.28.128.5
+    ports:
+      - 9446
     ram: 2048
     cpu: 1
     provisioner_script: broker/provisioner/product_provisioner.sh
@@ -41,6 +45,8 @@ servers:
     hostname: integrator
     box: wso2ei
     ip: 172.28.128.7
+    ports:
+      - 9443
     ram: 2048
     cpu: 1
     provisioner_script: integrator/provisioner/product_provisioner.sh
