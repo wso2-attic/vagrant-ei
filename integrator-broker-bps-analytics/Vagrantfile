@@ -35,6 +35,11 @@ Vagrant.configure(2) do |config|
       # use private networking (recommended for multi-machine scenarios)
       server_config.vm.network :private_network, ip: server['ip']
 
+      #generate the url
+      url = "https://"+TOKEN+"@vagrant.wso2.com/boxes/"+server['box']+".box"
+
+      server_config.vm.box_url = url
+
       #forwarding ports to access the server via localhost
       if server['ports']
         server['ports'].each do |port|
