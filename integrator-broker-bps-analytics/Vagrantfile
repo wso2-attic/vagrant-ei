@@ -18,6 +18,14 @@
 
 require 'yaml'
 require 'fileutils'
+require 'uri'
+require 'erb'
+
+$stdout.print "login: "
+USERNAME = $stdin.gets.chomp
+$stdout.print "password: "
+PASSWORD = $stdin.noecho(&:gets).chomp
+TOKEN = [ERB::Util.url_encode(USERNAME), PASSWORD].join(':')
 
 # load server configurations from YAML file
 CONFIGURATIONS = YAML.load_file('config.yaml')
