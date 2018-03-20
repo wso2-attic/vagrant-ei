@@ -31,7 +31,7 @@ servers:
     ram: 2048
     cpu: 1
     provisioner_script: analytics/provisioner/product_provisioner.sh
-    conf_dir: analytics/confs
+    conf_dir: analytics
   -
     hostname: integrator
     box: wso2ei
@@ -41,4 +41,4 @@ servers:
     ram: 2048
     cpu: 1
     provisioner_script: integrator/provisioner/product_provisioner.sh
-    conf_dir: integrator/confs
+    conf_dir: integrator
