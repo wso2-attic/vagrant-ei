@@ -16,19 +16,13 @@ Requires minimum of 16GB ram.
 
 ## How to run the Vagrantfile
 
-1. Follow the instructions in this repository to build the WSO2 Enterprise Integrator 6.0.0 and MySQL Vagrant boxes.
-
-```
-    https://github.com/wso2/vagrant-boxes
-```    
-
-2. Checkout this repository into your local machine using the following Git command.
+1. Checkout this repository into your local machine using the following Git command.
 
 ```
     git clone https://github.com/wso2/vagrant-ei.git
 ```
 
-3. Move to `vagrant-ei` folder.
+2. Move to `vagrant-ei` folder.
 
 ```
     cd vagrant-ei
