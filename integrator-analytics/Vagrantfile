@@ -38,6 +38,9 @@ Vagrant.configure(2) do |config|
       # define the virtual machine host name
       server_config.vm.host_name = server['hostname']
 
+      # Diasbling the synched folder
+      server_config.vm.synced_folder ".", "/vagrant", disabled: true
+
       #generate the url
       url = "https://"+TOKEN+"@vagrant.wso2.com/boxes/"+server['box']+".box"
 

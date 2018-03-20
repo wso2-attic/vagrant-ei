@@ -1,4 +1,3 @@
-# ------------------------------------------------------------------------
 # Copyright 2018 WSO2, Inc. (http://wso2.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,6 +37,9 @@ Vagrant.configure(2) do |config|
       server_config.vm.box = server['box']
       # define the virtual machine host name
       server_config.vm.host_name = server['hostname']
+
+      # Diasbling the synched folder
+      server_config.vm.synced_folder ".", "/vagrant", disabled: true
 
       #generate the url
       url = "https://"+TOKEN+"@vagrant.wso2.com/boxes/"+server['box']+".box"
