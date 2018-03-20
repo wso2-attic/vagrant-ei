@@ -1,4 +1,3 @@
-# ------------------------------------------------------------------------
 # Copyright 2018 WSO2, Inc. (http://wso2.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,6 +29,10 @@ TOKEN = [ERB::Util.url_encode(USERNAME), ERB::Util.url_encode(PASSWORD)].join(':
 # load server configurations from YAML file
 CONFIGURATIONS = YAML.load_file('config.yaml')
 Vagrant.configure(2) do |config|
+
+  # changing default timeout from 300 to 1000 seconds
+  config.vm.boot_timeout = 1000
+
   # loop through each server configuration specification
   CONFIGURATIONS['servers'].each do |server|
     # define the virtual machine configurations
@@ -39,14 +42,17 @@ Vagrant.configure(2) do |config|
       # define the virtual machine host name
       server_config.vm.host_name = server['hostname']
 
-      # setup network configurations for the virtual machine
-      # use private networking (recommended for multi-machine scenarios)
-      server_config.vm.network :private_network, ip: server['ip']
+      # Diasbling the synched folder
+      server_config.vm.synced_folder ".", "/vagrant", disabled: true
 
       #generate the url
       url = "https://"+TOKEN+"@vagrant.wso2.com/boxes/"+server['box']+".box"
 
       server_config.vm.box_url = url
+
+      # setup network configurations for the virtual machine
+      # use private networking (recommended for multi-machine scenarios)
+      server_config.vm.network :private_network, ip: server['ip']
 
       #forwarding ports to access the server via localhost
       if server['ports']
