@@ -21,6 +21,7 @@ servers:
     ram: 2048
     cpu: 1
     provisioner_script: mysql/provisioner/db_provisioner.sh
+    conf_dir: mysql/scripts
   -
     hostname: analytics
     box: wso2ei
@@ -30,7 +31,7 @@ servers:
     ram: 2048
     cpu: 1
     provisioner_script: analytics/provisioner/product_provisioner.sh
-
+    conf_dir: analytics
   -
     hostname: broker
     box: wso2ei
@@ -40,7 +41,7 @@ servers:
     ram: 2048
     cpu: 1
     provisioner_script: broker/provisioner/product_provisioner.sh
-
+    conf_dir: broker
   -
     hostname: business-process
     box: wso2ei
@@ -50,7 +51,7 @@ servers:
     ram: 2048
     cpu: 1
     provisioner_script: business-process/provisioner/product_provisioner.sh
-
+    conf_dir: business-process
   -
     hostname: integrator
     box: wso2ei
@@ -60,3 +61,4 @@ servers:
     ram: 2048
     cpu: 1
     provisioner_script: integrator/provisioner/product_provisioner.sh
+    conf_dir: integrator
