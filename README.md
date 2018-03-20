@@ -21,13 +21,17 @@ Requires minimum of 16GB ram.
 ```
     git clone https://github.com/wso2/vagrant-ei.git
 ```
-
+>If you are to try out an already released zip of this repo, please ignore this 1st step.
 2. Move to `vagrant-ei` folder.
 
 ```
     cd vagrant-ei
 ```
+>If you are to try out an already released zip of this repo, please ignore this 2nd step also. Instead, extract the zip file and directly browse to vagrant-ei-<released-version> folder.
 
+>If you are to try out an already released tag, after executing 2nd step, checkout the relevant tag, i.e. for example: 
+ git checkout tags/v6.1.1.3 and continue below steps.
+ 
 **The WSO2 EI considers 4 deployment profile combinations.**
 
   1. Integrator, Analytics, and MySQL
