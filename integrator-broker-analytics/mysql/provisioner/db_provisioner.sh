@@ -14,10 +14,11 @@
 
 DB_USER=root
 DB_PASSWORD=wso2carbon
+WORKING_DIRECTORY=/home/vagrant
 
 # run product db script
 echo "Execute the database scripts..."
-mysql -u${DB_USER} -p${DB_PASSWORD} -e "source /vagrant/mysql/provisioner/scripts/mysql.sql"
+mysql -u${DB_USER} -p${DB_PASSWORD} -e "source ${WORKING_DIRECTORY}/mysql/scripts/mysql.sql"
 echo "Successfully executed the database scripts."
 
 # grants root access to MySQL server from any host
