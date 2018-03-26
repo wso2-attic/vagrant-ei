@@ -98,6 +98,9 @@ fi
 export JAVA_HOME
 export WUM_PATH
 
+echo "Removing configurations directories."
+rm -rf ${CONFIGURATIONS}
+
 # start the WSO2 product pack as a background service
 echo "Starting ${WSO2_SERVER}-${WSO2_SERVER_VERSION}-integrator..."
 sh ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/bin/integrator.sh start
@@ -113,4 +116,4 @@ do
   [[ "${LOG_LINE}" == *"WSO2 Carbon started"* ]] && pkill tail
 done
 
-echo "Management console URL: https://${NODE_IP}:9443/carbon"
+echo "Management console URL: https://localhost:9443/carbon"
