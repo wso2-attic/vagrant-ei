@@ -15,7 +15,7 @@
 ---
 servers:
   -
-    hostname: mysql
+    hostname: wso2-mysql
     box: wso2-mysql
     ip: 172.28.128.3
     ram: 2048

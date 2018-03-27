@@ -25,8 +25,6 @@ CONFIGURATIONS=${WORKING_DIRECTORY}/business-process
 WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
 MYSQL_CONNECTOR=mysql-connector-java-5.1.*-bin.jar
 JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
-WUM_ARCHIVE=wum-1.0-linux-x64.tar.gz
-NODE_IP=$(/sbin/ifconfig eth1 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}')
 
 # operating in non-interactive mode
 export DEBIAN_FRONTEND=noninteractive
@@ -42,14 +40,6 @@ if test ! -d ${JAVA_HOME}; then
   mkdir ${JAVA_HOME};
   tar -xf ${WORKING_DIRECTORY}/${JDK_ARCHIVE} -C ${JAVA_HOME} --strip-components=1
   echo "Successfully set up Java"
-fi
-
-# set up wum
-echo "Setting up WUM."
-if test ! -d ${WUM_HOME}; then
-  mkdir ${WUM_HOME};
-  tar -xf ${WORKING_DIRECTORY}/${WUM_ARCHIVE} -C ${WUM_HOME} --strip-components=1
-  echo "Successfully set up WUM."
 fi
 
 # unpack the WSO2 product pack to the working directory
@@ -91,6 +81,9 @@ fi
 export JAVA_HOME
 export WUM_PATH
 
+echo "Removing configurations directories."
+rm -rf ${CONFIGURATIONS}
+
 # start the WSO2 product pack as a background service
 echo "Starting ${WSO2_SERVER}-${WSO2_SERVER_VERSION}-business-process..."
 sh ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/business-process/bin/wso2server.sh start
@@ -106,4 +99,4 @@ do
   [[ "${LOG_LINE}" == *"WSO2 Carbon started"* ]] && pkill tail
 done
 
-echo "Management console URL: https://${NODE_IP}:9445/carbon"
+echo "Management console URL: https://localhost:9445/carbon"
