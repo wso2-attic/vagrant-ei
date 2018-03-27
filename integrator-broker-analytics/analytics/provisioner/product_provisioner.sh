@@ -105,7 +105,7 @@ else
 fi
 
 export JAVA_HOME
-export WUM_PATHecho
+export WUM_PATH
 
 echo "Removing configurations directories."
 rm -rf ${CONFIGURATIONS}

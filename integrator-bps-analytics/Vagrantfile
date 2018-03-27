@@ -55,8 +55,6 @@ Vagrant.configure(2) do |config|
       # define the virtual machine host name
       server_config.vm.host_name = server['hostname']
 
-      server_config.vm.box_check_update = true
-
       # Diasbling the synched folder
       server_config.vm.synced_folder ".", "/vagrant", disabled: true
 
