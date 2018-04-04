@@ -120,6 +120,7 @@
 
         <datasource>
             <name>WSO2_MB_STORE_DB</name>
+            <description>The datasource used for message broker database</description>
             <jndiConfig>
                 <name>WSO2MBStoreDB</name>
             </jndiConfig>
@@ -129,9 +130,9 @@
                     <url>jdbc:mysql://172.28.128.3:3306/WSO2_MB_STORE_DB?autoReconnect=true</url>
                     <username>root</username>
                     <password>wso2carbon</password>
+                    <driverClassName>org.h2.Driver</driverClassName>
                     <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
-                    <minIdle>5</minIdle>
                     <testOnBorrow>true</testOnBorrow>
                     <validationQuery>SELECT 1</validationQuery>
                     <validationInterval>30000</validationInterval>
