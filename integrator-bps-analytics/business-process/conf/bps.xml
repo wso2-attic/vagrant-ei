@@ -106,7 +106,7 @@
     <!--tns:InMemoryInstanceTimeToLive>600000</tns:InMemoryInstanceTimeToLive-->
 
     <!-- This property  can be used to configure ode scheduler thread pool size  -->
-    <tns:ODESchedulerThreadPoolSize>50</tns:ODESchedulerThreadPoolSize>
+    <tns:ODESchedulerThreadPoolSize>10</tns:ODESchedulerThreadPoolSize>
     
     <!-- If you are using BPS in a clustered environment, then uncomment blow entry -->
     <!-- <tns:UseDistributedLock>true</tns:UseDistributedLock> -->
