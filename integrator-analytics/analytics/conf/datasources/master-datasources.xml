@@ -82,6 +82,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
+
                     <defaultAutoCommit></defaultAutoCommit>
                     <defaultReadOnly></defaultReadOnly>
                     <defaultTransactionIsolation>NONE|READ_COMMITTED|READ_UNCOMMITTED|REPEATABLE_READ|SERIALIZABLE</defaultTransactionIsolation>
@@ -92,12 +93,14 @@
                     <maxIdle></maxIdle>
                     <initialSize></initialSize>
                     <maxWait></maxWait>
+
                     <dataSourceClassName>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</dataSourceClassName>
                     <dataSourceProps>
                         <property name="url">jdbc:mysql://localhost:3306/Test1</property>
                         <property name="user">root</property>
                         <property name="password">123</property>
                     </dataSourceProps>
+
                 </configuration>
             </definition>
         </datasource-->
