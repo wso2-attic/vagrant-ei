@@ -14,11 +14,9 @@
 
 # set variables
 WSO2_SERVER=wso2ei
-WSO2_SERVER_VERSION=6.2.0
+WSO2_SERVER_VERSION=6.3.0
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
-WUM_HOME=/usr/local
-WUM_PATH=PATH=$PATH:/usr/local/wum/bin
 DEFAULT_MOUNT=/vagrant
 CONFIGURATIONS=${WORKING_DIRECTORY}/integrator
 WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
@@ -113,7 +111,6 @@ else
 fi
 
 export JAVA_HOME
-export WUM_PATH
 
 echo "Removing configurations directories."
 rm -rf ${CONFIGURATIONS}
