@@ -76,7 +76,7 @@ else
 fi
 
 echo "Copying ande-client.jar"
-cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/andes-client-3.2.45.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/andes-client-3.2.45.jar
+cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/andes-client-3.2.*.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/andes-client-3.2.*.jar
 if [ "$?" -eq "0" ];
 then
   echo "Successfully copied the ande-client.jar to the server pack."
