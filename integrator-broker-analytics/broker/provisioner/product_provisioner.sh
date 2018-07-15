@@ -15,11 +15,9 @@
 
 # set variables
 WSO2_SERVER=wso2ei
-WSO2_SERVER_VERSION=6.2.0
+WSO2_SERVER_VERSION=6.3.0
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
-WUM_HOME=/usr/local
-WUM_PATH=PATH=$PATH:/usr/local/wum/bin
 DEFAULT_MOUNT=/vagrant
 CONFIGURATIONS=${WORKING_DIRECTORY}/broker
 WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
@@ -79,7 +77,7 @@ else
 fi
 
 echo "Copying ande-client.jar"
-cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/andes-client-3.2.45.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/andes-client-3.2.45.jar
+cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/andes-client-3.2.*.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/andes-client-3.2.*.jar
 if [ "$?" -eq "0" ];
 then
   echo "Successfully copied the ande-client.jar to the server pack."
@@ -106,7 +104,6 @@ else
 fi
 
 export JAVA_HOME
-export WUM_PATH
 
 echo "Removing configurations directories."
 rm -rf ${CONFIGURATIONS}
