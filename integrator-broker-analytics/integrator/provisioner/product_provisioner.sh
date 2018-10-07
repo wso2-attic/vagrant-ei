@@ -14,7 +14,7 @@
 
 # set variables
 WSO2_SERVER=wso2ei
-WSO2_SERVER_VERSION=6.3.0
+WSO2_SERVER_VERSION=6.4.0
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
 DEFAULT_MOUNT=/vagrant

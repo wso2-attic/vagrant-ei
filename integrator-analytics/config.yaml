@@ -23,15 +23,25 @@ servers:
     provisioner_script: mysql/provisioner/db_provisioner.sh
     conf_dir: mysql/scripts
   -
-    hostname: analytics
+    hostname: analytics-dashboard
     box: wso2ei
     ip: 172.28.128.4
     ports:
       - 9444
     ram: 2048
     cpu: 1
-    provisioner_script: analytics/provisioner/product_provisioner.sh
-    conf_dir: analytics
+    provisioner_script: analytics-dashboard/provisioner/product_provisioner.sh
+    conf_dir: analytics-dashboard
+  -
+    hostname: analytics-worker
+    box: wso2ei
+    ip: 172.28.128.5
+    ports:
+      - 9444
+    ram: 2048
+    cpu: 1
+    provisioner_script: analytics-worker/provisioner/product_provisioner.sh
+    conf_dir: analytics-worker
   -
     hostname: integrator
     box: wso2ei
