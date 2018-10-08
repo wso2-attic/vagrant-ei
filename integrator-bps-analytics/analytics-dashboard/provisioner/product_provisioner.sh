@@ -48,7 +48,7 @@ echo "Successfully set up ${WSO2_SERVER}-${WSO2_SERVER_VERSION} server"
 
 # add the MySQL driver
 echo "Copying the MySQL driver to the server pack..."
-cp ${WORKING_DIRECTORY}/${MYSQL_CONNECTOR} ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/${MYSQL_CONNECTOR}
+cp ${WORKING_DIRECTORY}/${MYSQL_CONNECTOR} ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/analytics/lib/${MYSQL_CONNECTOR}
 if [ "$?" -eq "0" ];
 then
   echo "Successfully copied the MySQL driver to the server pack."
@@ -75,17 +75,17 @@ rm -rf ${CONFIGURATIONS}
 
 # start the WSO2 product pack as a background service
 echo "Starting ${WSO2_SERVER}-${WSO2_SERVER_VERSION}..."
-nohup ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/dashboard/bin/carbon.sh &
+nohup ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/analytics/wso2/dashboard/bin/carbon.sh &
 
 sleep 10
 
 # tail the WSO2 product server startup logs until the server startup confirmation is logged
-tail -f ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/dashboard/logs/carbon.log | while read LOG_LINE
+tail -f ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/analytics/wso2/dashboard/logs/carbon.log | while read LOG_LINE
 do
   # echo each log line
   echo "${LOG_LINE}"
   # once the log line with WSO2 Carbon server start confirmation was logged, kill the started tail process
-  [[ "${LOG_LINE}" == *"WSO2 Analytics Identity Server started"* ]] && pkill tail
+  [[ "${LOG_LINE}" == *"WSO2 Stream Processor started"* ]] && pkill tail
 done
 
 echo "Management console URL: https://localhost:9643/portal"

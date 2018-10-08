@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 # Copyright 2018 WSO2, Inc. (http://wso2.com)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +15,12 @@
 # set variables
 WSO2_SERVER=wso2ei
 WSO2_SERVER_VERSION=6.4.0
-WORKING_DIRECTORY=/home/vagrant
-JAVA_HOME=/opt/java/
-DEFAULT_MOUNT=/vagrant
-CONFIGURATIONS=${WORKING_DIRECTORY}/integrator
 WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
 MYSQL_CONNECTOR=mysql-connector-java-5.1.*-bin.jar
 JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
+WORKING_DIRECTORY=/home/vagrant
+JAVA_HOME=/opt/java/
+CONFIGURATIONS=${WORKING_DIRECTORY}/integrator
 
 # operating in non-interactive mode
 export DEBIAN_FRONTEND=noninteractive
@@ -58,8 +56,10 @@ else
 fi
 
 # copy files with configuration changes
+
 echo "Copying the files with configuration changes to the server pack..."
-cp -TRv ${CONFIGURATIONS}/conf/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/conf/
+
+cp -TRv ${CONFIGURATIONS}/conf ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/conf/
 if [ "$?" -eq "0" ];
 then
   echo "Successfully copied the configuration files."
@@ -73,14 +73,6 @@ then
   echo "Successfully copied the deployment Server files."
 else
   echo "Failed to copy the deployment Server files"
-fi
-
-cp -TRv ${CONFIGURATIONS}/repository/resources/security/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Security files."
-else
-  echo "Failed to copy the deployment Security files"
 fi
 
 export JAVA_HOME

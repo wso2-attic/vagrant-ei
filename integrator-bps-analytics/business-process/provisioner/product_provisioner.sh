@@ -19,10 +19,10 @@ WSO2_SERVER_VERSION=6.4.0
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
 DEFAULT_MOUNT=/vagrant
-CONFIGURATIONS=${WORKING_DIRECTORY}/business-process
 WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
 MYSQL_CONNECTOR=mysql-connector-java-5.1.*-bin.jar
 JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
+CONFIGURATIONS=${WORKING_DIRECTORY}/business-process
 
 # operating in non-interactive mode
 export DEBIAN_FRONTEND=noninteractive
@@ -60,20 +60,12 @@ fi
 # copy files with configuration changes
 echo "Copying the files with configuration changes to the server pack..."
 
-cp -TRv ${CONFIGURATIONS}/conf/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/business-process/conf/
+cp -TRv ${CONFIGURATIONS}/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/business-process/
 if [ "$?" -eq "0" ];
 then
   echo "Successfully copied the configuration files."
 else
   echo "Failed to copy the configuration files"
-fi
-
-cp -TRv ${CONFIGURATIONS}/repository/resources/security/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/business-process/repository/resources/security/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Server files."
-else
-  echo "Failed to copy the deployment Server files"
 fi
 
 export JAVA_HOME
