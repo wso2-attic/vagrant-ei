@@ -433,10 +433,10 @@ wso2.datasources:
       definition:
         type: RDBMS
         configuration:
-          jdbcUrl: 'jdbc:h2:${sys:carbon.home}/wso2/worker/database/EI_ANALYTICS;AUTO_SERVER=TRUE'
-          username: wso2carbon
+          jdbcUrl: 'jdbc:mysql://172.28.128.3:3306/WSO2_EI_ANALYTICS_DB?useSSL=false'
+          username: root
           password: wso2carbon
-          driverClassName: org.h2.Driver
+          driverClassName: com.mysql.jdbc.Driver
           maxPoolSize: 50
           idleTimeout: 60000
           validationTimeout: 30000
