@@ -68,14 +68,6 @@ else
   echo "Failed to copy the configuration files"
 fi
 
-cp -TRv ${CONFIGURATIONS}/repository/resources/security/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/repository/resources/security/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Security files."
-else
-  echo "Failed to copy the deployment Security files"
-fi
-
 echo "Copying ande-client.jar"
 cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/andes-client-3.2.*.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/andes-client-3.2.*.jar
 if [ "$?" -eq "0" ];
