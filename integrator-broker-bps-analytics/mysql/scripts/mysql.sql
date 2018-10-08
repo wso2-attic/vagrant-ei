@@ -1,21 +1,3 @@
-/**
-# Copyright 2018 WSO2, Inc. (http://wso2.com)
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-# http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License
- */
-
-
-
 -- ################################
 -- REGISTRY TABLES
 -- ################################
@@ -442,6 +424,16 @@ CREATE TABLE UM_PROFILE_CONFIG(
             PRIMARY KEY (UM_ID, UM_TENANT_ID)
 )ENGINE INNODB;
 
+CREATE TABLE IF NOT EXISTS UM_CLAIM_BEHAVIOR(
+    UM_ID INTEGER NOT NULL AUTO_INCREMENT,
+    UM_PROFILE_ID INTEGER,
+    UM_CLAIM_ID INTEGER,
+    UM_BEHAVIOUR SMALLINT,
+    UM_TENANT_ID INTEGER DEFAULT 0,
+    FOREIGN KEY(UM_PROFILE_ID, UM_TENANT_ID) REFERENCES UM_PROFILE_CONFIG(UM_ID,UM_TENANT_ID),
+    FOREIGN KEY(UM_CLAIM_ID, UM_TENANT_ID) REFERENCES UM_CLAIM(UM_ID,UM_TENANT_ID),
+    PRIMARY KEY(UM_ID, UM_TENANT_ID)
+)ENGINE INNODB;
 
 CREATE TABLE UM_HYBRID_ROLE(
             UM_ID INTEGER NOT NULL AUTO_INCREMENT,
@@ -468,6 +460,8 @@ CREATE TABLE UM_SYSTEM_ROLE(
             UM_TENANT_ID INTEGER DEFAULT 0,
             PRIMARY KEY (UM_ID, UM_TENANT_ID)
 )ENGINE INNODB;
+
+CREATE INDEX SYSTEM_ROLE_IND_BY_RN_TI ON UM_SYSTEM_ROLE(UM_ROLE_NAME, UM_TENANT_ID);
 
 CREATE TABLE UM_SYSTEM_USER_ROLE(
             UM_ID INTEGER NOT NULL AUTO_INCREMENT,
@@ -948,7 +942,6 @@ create table ACT_RU_EVENT_SUBSCR (
     primary key (ID_)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
 
-
 create table ACT_EVT_LOG (
     LOG_NR_ bigint auto_increment,
     TYPE_ varchar(64),
@@ -1425,5 +1418,4 @@ CREATE TABLE HT_COORDINATION_DATA (MESSAGE_ID VARCHAR(255) NOT NULL, PROCESS_INS
 -- ANALYTICS TABLES
 -- ################################
 
-CREATE DATABASE `WSO2_ANALYTICS_EVENT_STORE_DB`;
-CREATE DATABASE `WSO2_ANALYTICS_PROCESSED_DATA_STORE_DB`;
+CREATE DATABASE `WSO2_EI_ANALYTICS_DB`;

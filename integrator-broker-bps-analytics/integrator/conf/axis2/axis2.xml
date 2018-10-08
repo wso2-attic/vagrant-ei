@@ -18,7 +18,7 @@
   -->
 
 <axisconfig name="AxisJava2.0">
-    
+
     <!-- ================================================= -->
     <!--                  Parameters                       -->
     <!-- ================================================= -->
@@ -68,7 +68,7 @@
     <!-- During a fault, stacktrace can be sent with the fault message. The following flag -->
     <!-- will control that behaviour -->
     <parameter name="sendStacktraceDetailsWithFaults" locked="false">false</parameter>
-    
+
     <!-- If there aren't any information available to find out the fault reason, we set the -->
     <!-- message of the exception as the faultreason/Reason. But when a fault is thrown from -->
     <!-- a service or some where, it will be wrapped by different levels. Due to this the -->
@@ -170,7 +170,8 @@
                          class="org.apache.axis2.transport.http.SOAPMessageFormatter"/>
         <messageFormatter contentType="text/plain"
                          class="org.apache.axis2.format.PlainTextFormatter"/>
-
+        <messageFormatter contentType="application/octet-stream"
+                          class="org.wso2.carbon.relay.ExpandingMessageFormatter"/>
         <!--JSON Message Formatters-->
         <messageFormatter contentType="application/json"
                           class="org.wso2.carbon.integrator.core.json.JsonStreamFormatter"/>
@@ -210,7 +211,8 @@
                         class="org.apache.axis2.builder.MultipartFormDataBuilder"/>
         <messageBuilder contentType="text/plain"
                         class="org.apache.axis2.format.PlainTextBuilder"/>
-
+        <messageBuilder contentType="application/octet-stream"
+                        class="org.wso2.carbon.relay.BinaryRelayBuilder"/>
         <!--JSON Message Builders-->
         <messageBuilder contentType="application/json"
                         class="org.wso2.carbon.integrator.core.json.JsonStreamBuilder"/>
@@ -244,7 +246,7 @@
         <parameter name="port" locked="false">8280</parameter>
         <parameter name="non-blocking" locked="false">true</parameter>
         <!--parameter name="bind-address" locked="false">hostname or IP address</parameter-->
-        <!--parameter name="WSDLEPRPrefix" locked="false">https://apachehost:port/somepath</parameter-->
+        <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8280</parameter>
         <parameter name="httpGetProcessor" locked="false">org.wso2.carbon.mediation.transport.handlers.PassThroughNHttpGetProcessor</parameter>
         <!--<parameter name="priorityConfigFile" locked="false">location of priority configuration file</parameter>-->
     </transportReceiver>
@@ -254,7 +256,7 @@
         <parameter name="non-blocking" locked="false">true</parameter>
         <parameter name="HttpsProtocols">TLSv1,TLSv1.1,TLSv1.2</parameter>
         <!--parameter name="bind-address" locked="false">hostname or IP address</parameter-->
-        <!--parameter name="WSDLEPRPrefix" locked="false">https://apachehost:port/somepath</parameter-->
+        <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8243</parameter>
         <parameter name="httpGetProcessor" locked="false">org.wso2.carbon.mediation.transport.handlers.PassThroughNHttpGetProcessor</parameter>
         <parameter name="keystore" locked="false">
             <KeyStore>
@@ -332,8 +334,8 @@
         </parameter>
     </transportReceiver-->
 
-    <!--Uncomment this and configure as appropriate for JMS transport support with WSO2 MB 2.x.x -->
-    <transportReceiver name="jms" class="org.apache.axis2.transport.jms.JMSListener">
+    <!--Uncomment this and configure as appropriate for JMS transport support with WSO2 EI Broker Profile -->
+    <!--transportReceiver name="jms" class="org.apache.axis2.transport.jms.JMSListener">
         <parameter name="myTopicConnectionFactory" locked="false">
            <parameter name="java.naming.factory.initial" locked="false">org.wso2.andes.jndi.PropertiesFileInitialContextFactory</parameter>
             <parameter name="java.naming.provider.url" locked="false">conf/jndi.properties</parameter>
@@ -354,12 +356,12 @@
             <parameter name="transport.jms.ConnectionFactoryJNDIName" locked="false">QueueConnectionFactory</parameter>
             <parameter name="transport.jms.ConnectionFactoryType" locked="false">queue</parameter>
         </parameter>
-    </transportReceiver>
+    </transportReceiver-->
 
     <!--Uncomment this for FIX transport support
     <transportReceiver name="fix" class="org.apache.synapse.transport.fix.FIXTransportListener"/>
     -->
-    
+
     <!--transportReceiver name="hl7" class="org.wso2.carbon.business.messaging.hl7.transport.HL7TransportListener"/-->
 
     <!-- SAP Transport Listeners -->
@@ -426,8 +428,8 @@
     <!--Uncomment this local transport to use local transport in mediation flow-->
     <!--<transportSender name="local" class="org.apache.axis2.transport.local.NonBlockingLocalTransportSender"/>-->
 
-    <!-- uncomment this and configure to use connection pools for sending messages -->
-    <transportSender name="jms" class="org.apache.axis2.transport.jms.JMSSender"/>
+   <!-- uncomment this and configure to use connection pools for sending messages>
+     <transportSender name="jms" class="org.apache.axis2.transport.jms.JMSSender"/-->
 
     <!--transportSender name="vfs" class="org.apache.synapse.transport.vfs.VFSTransportSender"/-->
 
@@ -446,7 +448,7 @@
     <!--Uncomment this for FIX transport support
     <transportSender name="fix" class="org.apache.synapse.transport.fix.FIXTransportSender"/>
     -->
-    
+
     <!--transportSender name="hl7" class="org.wso2.carbon.business.messaging.hl7.transport.HL7TransportSender"/-->
 
     <!-- SAP Transport Senders -->
@@ -457,12 +459,12 @@
     <transportSender name="rabbitmq" class="org.apache.axis2.transport.rabbitmq.RabbitMQSender"/-->
 
     <!--<transportSender name="mqtt" class="org.apache.axis2.transport.mqtt.MqttSender"/>-->
-    
+
     <!--<transportSender name="ws" class="org.wso2.carbon.websocket.transport.WebsocketTransportSender">
         <parameter name="ws.outflow.dispatch.sequence" locked="false">outflowDispatchSeq</parameter>
-        <parameter name="ws.outflow.dispatch.fault.sequence" locked="false">outflowFaultSeq</parameter>       
+        <parameter name="ws.outflow.dispatch.fault.sequence" locked="false">outflowFaultSeq</parameter>
     </transportSender>-->
-    
+
     <!--<transportSender name="wss" class="org.wso2.carbon.websocket.transport.WebsocketTransportSender">
         <parameter name="ws.outflow.dispatch.sequence" locked="false">outflowDispatchSeq</parameter>
         <parameter name="ws.outflow.dispatch.fault.sequence" locked="false">outflowFaultSeq</parameter>
@@ -616,7 +618,7 @@
     <!-- ================================================= -->
 
     <!--
-        Uncomment and configure the following section to enable transactions support 
+        Uncomment and configure the following section to enable transactions support
     -->
     <!--<transaction timeout="30000">
         <parameter name="java.naming.factory.initial">org.apache.activemq.jndi.ActiveMQInitialContextFactory</parameter>
