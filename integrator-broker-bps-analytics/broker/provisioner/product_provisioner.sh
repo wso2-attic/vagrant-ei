@@ -18,6 +18,7 @@ WSO2_SERVER=wso2ei
 WSO2_SERVER_VERSION=6.4.0
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
+DEFAULT_MOUNT=/vagrant
 CONFIGURATIONS=${WORKING_DIRECTORY}/broker
 WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
 MYSQL_CONNECTOR=mysql-connector-java-5.1.*-bin.jar
@@ -67,14 +68,6 @@ else
   echo "Failed to copy the configuration files"
 fi
 
-cp -TRv ${CONFIGURATIONS}/repository/resources/security/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/repository/resources/security/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Server files."
-else
-  echo "Failed to copy the deployment Server files"
-fi
-
 echo "Copying ande-client.jar"
 cp ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/client-lib/andes-client-3.2.*.jar ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/andes-client-3.2.*.jar
 if [ "$?" -eq "0" ];
@@ -110,6 +103,7 @@ rm -rf ${CONFIGURATIONS}
 # start the WSO2 product pack as a background service
 echo "Starting ${WSO2_SERVER}-${WSO2_SERVER_VERSION}-broker..."
 sh ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/bin/wso2server.sh start
+
 sleep 10
 
 # tail the WSO2 product server startup logs until the server startup confirmation is logged
