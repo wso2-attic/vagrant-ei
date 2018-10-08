@@ -14,7 +14,7 @@
 
 # set variables
 WSO2_SERVER=wso2ei
-WSO2_SERVER_VERSION=6.3.0
+WSO2_SERVER_VERSION=6.4.0
 WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
 MYSQL_CONNECTOR=mysql-connector-java-5.1.*-bin.jar
 JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
@@ -73,14 +73,6 @@ then
   echo "Successfully copied the deployment Server files."
 else
   echo "Failed to copy the deployment Server files"
-fi
-
-cp -TRv ${CONFIGURATIONS}/repository/resources/security/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Security files."
-else
-  echo "Failed to copy the deployment Security files"
 fi
 
 export JAVA_HOME

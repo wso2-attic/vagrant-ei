@@ -15,7 +15,7 @@
 
 # set variables
 WSO2_SERVER=wso2ei
-WSO2_SERVER_VERSION=6.3.0
+WSO2_SERVER_VERSION=6.4.0
 WORKING_DIRECTORY=/home/vagrant
 JAVA_HOME=/opt/java/
 DEFAULT_MOUNT=/vagrant
@@ -66,14 +66,6 @@ then
   echo "Successfully copied the configuration files."
 else
   echo "Failed to copy the configuration files"
-fi
-
-cp -TRv ${CONFIGURATIONS}/repository/resources/security/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/wso2/broker/repository/resources/security/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Security files."
-else
-  echo "Failed to copy the deployment Security files"
 fi
 
 echo "Copying ande-client.jar"
