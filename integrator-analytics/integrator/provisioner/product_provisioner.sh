@@ -75,14 +75,6 @@ else
   echo "Failed to copy the deployment Server files"
 fi
 
-cp -TRv ${CONFIGURATIONS}/repository/resources/security/ ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/repository/resources/security/
-if [ "$?" -eq "0" ];
-then
-  echo "Successfully copied the deployment Security files."
-else
-  echo "Failed to copy the deployment Security files"
-fi
-
 export JAVA_HOME
 
 echo "Removing configurations directories."
