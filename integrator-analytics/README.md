@@ -6,6 +6,11 @@ from WSO2 since the referring Vagrant Boxes hosted at vagrant.wso2.com contains 
 Run the selected profile combination using the following command.
 
 ```
+    vagrant --updates up
+```
+In order to run this Vagrant setup without updates, run the selected profile combination using the following command.
+
+```
     vagrant up
 ```
 

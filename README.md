@@ -29,9 +29,9 @@ Requires minimum of 16GB ram.
 ```
 >If you are to try out an already released zip of this repo, please ignore this 2nd step also. Instead, extract the zip file and directly browse to vagrant-ei-<released-version> folder.
 
->If you are to try out an already released tag, after executing 2nd step, checkout the relevant tag, i.e. for example: 
+>If you are to try out an already released tag, after executing 2nd step, checkout the relevant tag, i.e. for example:
  git checkout tags/v6.4.0.1 and continue below steps.
- 
+
 **The WSO2 EI considers 4 deployment profile combinations.**
 
   1. Integrator, Analytics, and MySQL
@@ -74,6 +74,11 @@ Move to `integrator-broker-bps-analytics` folder.
 ```
 
 ### Run the selected profile combination using the following command.
+
+```
+    vagrant --updates up
+```
+In order to run the setup without updates,run the selected profile combination using the following command.
 
 ```
     vagrant up
