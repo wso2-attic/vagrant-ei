@@ -72,7 +72,7 @@
                     <url>jdbc:mysql://172.28.128.3:3306/WSO2_REGISTRY_DB?autoReconnect=true&amp;useSSL=false</url>
                     <username>root</username>
                     <password>wso2carbon</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
                     <maxActive>80</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -93,7 +93,7 @@
                     <url>jdbc:mysql://172.28.128.3:3306/WSO2_USER_DB?autoReconnect=true&amp;useSSL=false</url>
                     <username>root</username>
                     <password>wso2carbon</password>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
                     <maxActive>50</maxActive>
                     <maxWait>60000</maxWait>
                     <testOnBorrow>true</testOnBorrow>
@@ -110,7 +110,7 @@
             </jndiConfig>
             <definition type="RDBMS">
                 <configuration>
-                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
                     <url>jdbc:mysql://172.28.128.3:3306/WSO2_MB_STORE_DB?autoReconnect=true&amp;useSSL=false</url>
                     <username>root</username>
                     <password>wso2carbon</password>
@@ -134,7 +134,7 @@
              </jndiConfig>
              <definition type="RDBMS">
                  <configuration>
-                     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                     <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
                      <url>jdbc:mysql://localhost/wso2_mb</url>
                      <username>root</username>
                      <password>root</password>

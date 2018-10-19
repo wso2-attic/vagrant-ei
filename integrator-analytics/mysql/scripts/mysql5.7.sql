@@ -61,9 +61,9 @@ CREATE TABLE IF NOT EXISTS REG_RESOURCE (
             REG_VERSION         INTEGER NOT NULL AUTO_INCREMENT,
             REG_MEDIA_TYPE      VARCHAR(500),
             REG_CREATOR         VARCHAR(31) NOT NULL,
-            REG_CREATED_TIME    TIMESTAMP NOT NULL DEFAULT 0,
+            REG_CREATED_TIME    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             REG_LAST_UPDATOR    VARCHAR(31),
-            REG_LAST_UPDATED_TIME    TIMESTAMP NOT NULL DEFAULT 0,
+            REG_LAST_UPDATED_TIME    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             REG_DESCRIPTION     VARCHAR(1000),
             REG_CONTENT_ID      INTEGER,
             REG_TENANT_ID INTEGER DEFAULT 0,
@@ -85,9 +85,9 @@ CREATE TABLE IF NOT EXISTS REG_RESOURCE_HISTORY (
             REG_VERSION         INTEGER NOT NULL,
             REG_MEDIA_TYPE      VARCHAR(500),
             REG_CREATOR         VARCHAR(31) NOT NULL,
-            REG_CREATED_TIME    TIMESTAMP NOT NULL DEFAULT 0,
+            REG_CREATED_TIME    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             REG_LAST_UPDATOR    VARCHAR(31),
-            REG_LAST_UPDATED_TIME    TIMESTAMP NOT NULL DEFAULT 0,
+            REG_LAST_UPDATED_TIME    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             REG_DESCRIPTION     VARCHAR(1000),
             REG_CONTENT_ID      INTEGER,
             REG_DELETED         SMALLINT,
@@ -424,16 +424,6 @@ CREATE TABLE UM_PROFILE_CONFIG(
             PRIMARY KEY (UM_ID, UM_TENANT_ID)
 )ENGINE INNODB;
 
-CREATE TABLE IF NOT EXISTS UM_CLAIM_BEHAVIOR(
-    UM_ID INTEGER NOT NULL AUTO_INCREMENT,
-    UM_PROFILE_ID INTEGER,
-    UM_CLAIM_ID INTEGER,
-    UM_BEHAVIOUR SMALLINT,
-    UM_TENANT_ID INTEGER DEFAULT 0,
-    FOREIGN KEY(UM_PROFILE_ID, UM_TENANT_ID) REFERENCES UM_PROFILE_CONFIG(UM_ID,UM_TENANT_ID),
-    FOREIGN KEY(UM_CLAIM_ID, UM_TENANT_ID) REFERENCES UM_CLAIM(UM_ID,UM_TENANT_ID),
-    PRIMARY KEY(UM_ID, UM_TENANT_ID)
-)ENGINE INNODB;
 
 CREATE TABLE UM_HYBRID_ROLE(
             UM_ID INTEGER NOT NULL AUTO_INCREMENT,
@@ -460,8 +450,6 @@ CREATE TABLE UM_SYSTEM_ROLE(
             UM_TENANT_ID INTEGER DEFAULT 0,
             PRIMARY KEY (UM_ID, UM_TENANT_ID)
 )ENGINE INNODB;
-
-CREATE INDEX SYSTEM_ROLE_IND_BY_RN_TI ON UM_SYSTEM_ROLE(UM_ROLE_NAME, UM_TENANT_ID);
 
 CREATE TABLE UM_SYSTEM_USER_ROLE(
             UM_ID INTEGER NOT NULL AUTO_INCREMENT,
@@ -795,7 +783,7 @@ create table ACT_RE_DEPLOYMENT (
     NAME_ varchar(255),
     CATEGORY_ varchar(255),
     TENANT_ID_ varchar(255) default '',
-    DEPLOY_TIME_ timestamp NULL,
+    DEPLOY_TIME_ timestamp(3) NULL,
     primary key (ID_)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
 
@@ -805,8 +793,8 @@ create table ACT_RE_MODEL (
     NAME_ varchar(255),
     KEY_ varchar(255),
     CATEGORY_ varchar(255),
-    CREATE_TIME_ timestamp null,
-    LAST_UPDATE_TIME_ timestamp null,
+    CREATE_TIME_ timestamp(3) null,
+    LAST_UPDATE_TIME_ timestamp(3) null,
     VERSION_ integer,
     META_INFO_ varchar(4000),
     DEPLOYMENT_ID_ varchar(64),
@@ -833,7 +821,7 @@ create table ACT_RU_EXECUTION (
     CACHED_ENT_STATE_ integer,
     TENANT_ID_ varchar(255) default '',
     NAME_ varchar(255),
-    LOCK_TIME_ timestamp NULL,
+    LOCK_TIME_ timestamp(3) NULL,
     primary key (ID_)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
 
@@ -841,7 +829,7 @@ create table ACT_RU_JOB (
     ID_ varchar(64) NOT NULL,
     REV_ integer,
     TYPE_ varchar(255) NOT NULL,
-    LOCK_EXP_TIME_ timestamp NULL,
+    LOCK_EXP_TIME_ timestamp(3) NULL,
     LOCK_OWNER_ varchar(255),
     EXCLUSIVE_ boolean,
     EXECUTION_ID_ varchar(64),
@@ -850,7 +838,7 @@ create table ACT_RU_JOB (
     RETRIES_ integer,
     EXCEPTION_STACK_ID_ varchar(64),
     EXCEPTION_MSG_ varchar(4000),
-    DUEDATE_ timestamp NULL,
+    DUEDATE_ timestamp(3) NULL,
     REPEAT_ varchar(255),
     HANDLER_TYPE_ varchar(255),
     HANDLER_CFG_ varchar(4000),
@@ -890,8 +878,8 @@ create table ACT_RU_TASK (
     ASSIGNEE_ varchar(255),
     DELEGATION_ varchar(64),
     PRIORITY_ integer,
-    CREATE_TIME_ timestamp NULL,
-    DUE_DATE_ datetime,
+    CREATE_TIME_ timestamp(3) NULL,
+    DUE_DATE_ datetime(3),
     CATEGORY_ varchar(255),
     SUSPENSION_STATE_ integer,
     TENANT_ID_ varchar(255) default '',
@@ -936,7 +924,7 @@ create table ACT_RU_EVENT_SUBSCR (
     PROC_INST_ID_ varchar(64),
     ACTIVITY_ID_ varchar(64),
     CONFIGURATION_ varchar(255),
-    CREATED_ timestamp not null DEFAULT CURRENT_TIMESTAMP,
+    CREATED_ timestamp(3) not null DEFAULT CURRENT_TIMESTAMP(3),
     PROC_DEF_ID_ varchar(64),
     TENANT_ID_ varchar(255) default '',
     primary key (ID_)
@@ -949,11 +937,11 @@ create table ACT_EVT_LOG (
     PROC_INST_ID_ varchar(64),
     EXECUTION_ID_ varchar(64),
     TASK_ID_ varchar(64),
-    TIME_STAMP_ timestamp not null,
+    TIME_STAMP_ timestamp(3) not null,
     USER_ID_ varchar(255),
     DATA_ LONGBLOB,
     LOCK_OWNER_ varchar(255),
-    LOCK_TIME_ timestamp null,
+    LOCK_TIME_ timestamp(3) null,
     IS_PROCESSED_ tinyint default 0,
     primary key (LOG_NR_)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
@@ -1093,8 +1081,8 @@ create table ACT_HI_PROCINST (
     PROC_INST_ID_ varchar(64) not null,
     BUSINESS_KEY_ varchar(255),
     PROC_DEF_ID_ varchar(64) not null,
-    START_TIME_ datetime not null,
-    END_TIME_ datetime,
+    START_TIME_ datetime(3) not null,
+    END_TIME_ datetime(3),
     DURATION_ bigint,
     START_USER_ID_ varchar(255),
     START_ACT_ID_ varchar(255),
@@ -1118,8 +1106,8 @@ create table ACT_HI_ACTINST (
     ACT_NAME_ varchar(255),
     ACT_TYPE_ varchar(255) not null,
     ASSIGNEE_ varchar(255),
-    START_TIME_ datetime not null,
-    END_TIME_ datetime,
+    START_TIME_ datetime(3) not null,
+    END_TIME_ datetime(3),
     DURATION_ bigint,
     TENANT_ID_ varchar(255) default '',
     primary key (ID_)
@@ -1136,13 +1124,13 @@ create table ACT_HI_TASKINST (
     DESCRIPTION_ varchar(4000),
     OWNER_ varchar(255),
     ASSIGNEE_ varchar(255),
-    START_TIME_ datetime not null,
-    CLAIM_TIME_ datetime,
-    END_TIME_ datetime,
+    START_TIME_ datetime(3) not null,
+    CLAIM_TIME_ datetime(3),
+    END_TIME_ datetime(3),
     DURATION_ bigint,
     DELETE_REASON_ varchar(4000),
     PRIORITY_ integer,
-    DUE_DATE_ datetime,
+    DUE_DATE_ datetime(3),
     FORM_KEY_ varchar(255),
     CATEGORY_ varchar(255),
     TENANT_ID_ varchar(255) default '',
@@ -1162,8 +1150,8 @@ create table ACT_HI_VARINST (
     LONG_ bigint,
     TEXT_ varchar(4000),
     TEXT2_ varchar(4000),
-    CREATE_TIME_ datetime,
-    LAST_UPDATED_TIME_ datetime,
+    CREATE_TIME_ datetime(3),
+    LAST_UPDATED_TIME_ datetime(3),
     primary key (ID_)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
 
@@ -1177,7 +1165,7 @@ create table ACT_HI_DETAIL (
     NAME_ varchar(255) not null,
     VAR_TYPE_ varchar(255),
     REV_ integer,
-    TIME_ datetime not null,
+    TIME_ datetime(3) not null,
     BYTEARRAY_ID_ varchar(64),
     DOUBLE_ double,
     LONG_ bigint,
@@ -1189,7 +1177,7 @@ create table ACT_HI_DETAIL (
 create table ACT_HI_COMMENT (
     ID_ varchar(64) not null,
     TYPE_ varchar(255),
-    TIME_ datetime not null,
+    TIME_ datetime(3) not null,
     USER_ID_ varchar(255),
     TASK_ID_ varchar(64),
     PROC_INST_ID_ varchar(64),
@@ -1210,7 +1198,7 @@ create table ACT_HI_ATTACHMENT (
     PROC_INST_ID_ varchar(64),
     URL_ varchar(4000),
     CONTENT_ID_ varchar(64),
-    TIME_ datetime,
+    TIME_ datetime(3),
     primary key (ID_)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
 
@@ -1245,17 +1233,17 @@ create index ACT_IDX_HI_IDENT_LNK_PROCINST on ACT_HI_IDENTITYLINK(PROC_INST_ID_)
 create index ACT_IDX_HI_TASK_INST_PROCINST on ACT_HI_TASKINST(PROC_INST_ID_);
 
 create table ACT_BPS_SUBSTITUTES (
-  USERNAME varchar(255) not null,
-  SUBSTITUTE varchar(255) not null,
-  TASK_LIST varchar(1000),
-  UPDATED timestamp on UPDATE CURRENT_TIMESTAMP,
-  SUBSTITUTION_START timestamp not null,
-  SUBSTITUTION_END timestamp null,
-  ENABLED tinyint default 1,
-  CREATED timestamp,
-  TRANSITIVE_SUBSTITUTE varchar(255) null,
-  TENANT_ID int NOT NULL,
-  primary key (USERNAME, TENANT_ID)
+    USERNAME varchar(255) not null,
+    SUBSTITUTE varchar(255) not null,
+    TASK_LIST varchar(1000),
+    UPDATED timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    SUBSTITUTION_START timestamp not null DEFAULT CURRENT_TIMESTAMP,
+    SUBSTITUTION_END timestamp null,
+    ENABLED tinyint default 1,
+    CREATED timestamp DEFAULT CURRENT_TIMESTAMP,
+    TRANSITIVE_SUBSTITUTE varchar(255) null,
+    TENANT_ID int NOT NULL,
+    primary key (USERNAME, TENANT_ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_bin;
 
 
@@ -1412,7 +1400,6 @@ CREATE TABLE ATTACHMENT (
 -- B4P Related SQL Scripts
 --
 CREATE TABLE HT_COORDINATION_DATA (MESSAGE_ID VARCHAR(255) NOT NULL, PROCESS_INSTANCE_ID VARCHAR(255), PROTOCOL_HANDlER_URL VARCHAR(255) NOT NULL, TASK_ID VARCHAR(255), PRIMARY KEY (MESSAGE_ID)) ENGINE = innodb;
-
 
 -- ################################
 -- ANALYTICS TABLES
