@@ -32,7 +32,6 @@ if ARGV[0] == '--updates'
   TOKEN = [ERB::Util.url_encode(USERNAME), ERB::Util.url_encode(PASSWORD)].join(':')
 else
   # initializing USERNAME and PASSWORD
-  print "Using the Vagrant boxes with no updates...\n"
   USERNAME = ""
   PASSWORD = ""
 end

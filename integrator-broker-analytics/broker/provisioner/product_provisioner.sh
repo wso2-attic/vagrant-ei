@@ -21,7 +21,7 @@ JAVA_HOME=/opt/java/
 DEFAULT_MOUNT=/vagrant
 CONFIGURATIONS=${WORKING_DIRECTORY}/broker
 WSO2_SERVER_PACK=${WSO2_SERVER}-${WSO2_SERVER_VERSION}*.zip
-MYSQL_CONNECTOR=mysql-connector-java-5.1.*-bin.jar
+MYSQL_CONNECTOR=mysql-connector-java-*.jar
 JDK_ARCHIVE=jdk-8u*-linux-x64.tar.gz
 
 # operating in non-interactive mode
@@ -49,7 +49,7 @@ echo "Successfully set up ${WSO2_SERVER}-${WSO2_SERVER_VERSION} server"
 
 # add the MySQL driver
 echo "Copying the MySQL driver to the server pack..."
-cp ${WORKING_DIRECTORY}/${MYSQL_CONNECTOR} ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/${MYSQL_CONNECTOR}
+cp ${WORKING_DIRECTORY}/${MYSQL_CONNECTOR} ${WORKING_DIRECTORY}/${WSO2_SERVER}-${WSO2_SERVER_VERSION}/lib/
 if [ "$?" -eq "0" ];
 then
   echo "Successfully copied the MySQL driver to the server pack."
