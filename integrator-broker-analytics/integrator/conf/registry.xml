@@ -141,7 +141,7 @@
   </remoteInstance>
   <mount path="/_system/config" overwrite="virtual">
     <instanceId>WSO2_REGISTRY_DB</instanceId>
-    <targetPath>/_system/business-process/config</targetPath>
+    <targetPath>/_system/integrator/config</targetPath>
   </mount>
   <mount path="/_system/governance" overwrite="virtual">
     <instanceId>WSO2_REGISTRY_DB</instanceId>
@@ -160,7 +160,7 @@
   </remoteInstance>
   <mount path="/_system/config" overwrite="virtual">
     <instanceId>WSO2_REGISTRY_DB</instanceId>
-    <targetPath>/_system/business-process/config</targetPath>
+    <targetPath>/_system/integrator/config</targetPath>
   </mount>
   <mount path="/_system/governance" overwrite="virtual">
     <instanceId>WSO2_REGISTRY_DB</instanceId>
