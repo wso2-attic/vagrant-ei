@@ -94,6 +94,12 @@ files:
         value:
           |
           <MgtHostName>172.28.128.7</MgtHostName>
+      - operation: replace
+        xpath: "Analytics/ServerURL"
+        value: "tcp://172.28.128.5:7612"
+      - operation: replace
+        xpath: "Analytics/AuthServerURL"
+        value: "ssl://172.28.128.5:7712"
   # synapse.properties
   - file_path: integrator-analytics/integrator/conf/synapse.properties
     file_type: txt
@@ -426,6 +432,12 @@ files:
       - operation: replace
         xpath: "Axis2Config/HideAdminServiceWSDLs"
         value: "true"
+      - operation: replace
+        xpath: "Analytics/ServerURL"
+        value: "tcp://172.28.128.5:7612"
+      - operation: replace
+        xpath: "Analytics/AuthServerURL"
+        value: "ssl://172.28.128.5:7712"
   # registry.xml
   - file_path: integrator-bps-analytics/integrator/conf/registry.xml
     relative_path: "{$arg.wso2ei}/conf/registry.xml"
@@ -785,6 +797,12 @@ files:
         value:
           |
           <MgtHostName>172.28.128.7</MgtHostName>
+      - operation: replace
+        xpath: "Analytics/ServerURL"
+        value: "tcp://172.28.128.5:7612"
+      - operation: replace
+        xpath: "Analytics/AuthServerURL"
+        value: "ssl://172.28.128.5:7712"
   # registry.xml
   - file_path: integrator-broker-analytics/integrator/conf/registry.xml
     relative_path: "{$arg.wso2ei}/conf/registry.xml"
