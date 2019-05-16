@@ -336,9 +336,8 @@ do
     -Dcom.ibm.cacheLocalHost=true \
     -DworkerNode=false \
     -Dorg.apache.cxf.io.CachedOutputStream.Threshold=104857600 \
-    -Dhttpclient.hostnameVerifier=AllowAll \
-    -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \
-    $NODE_PARAMS \
+-Dhttpclient.hostnameVerifier=AllowAll \
+ -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \    $NODE_PARAMS \
     org.wso2.carbon.bootstrap.Bootstrap $*
     status=$?
 done
