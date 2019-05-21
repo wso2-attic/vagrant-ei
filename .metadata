@@ -16,6 +16,8 @@
 params:
   existing-version: 6.4.0
   new-version: 6.5.0
+  existing-version-docs: v6.4.0.1
+  new-version-docs: v6.5.0.1
   wso2ei: wso2ei-6.5.0
 # files based configurations
 files:
@@ -24,8 +26,8 @@ files:
     relative_path: ~
     configurations:
       - operation: replace
-        current_value: "v6.4.0.1"
-        new_value: "v6.5.0.1"
+        current_value: "{$arg.existing-version-docs}"
+        new_value: "{$arg.new-version-docs}"
   # integrator-analytics
   # analytics-dashboard - product_provisioner.sh
   - file_path: integrator-analytics/analytics-dashboard/provisioner/product_provisioner.sh
@@ -161,23 +163,6 @@ files:
               </configuration>
             </definition>
           </datasource>
-  # MessageFlowConfigurationPublisher.xml
-  - file_path: integrator-analytics/integrator/repository/deployment/server/eventpublishers/MessageFlowConfigurationPublisher.xml
-    file_type: xml
-    relative_path: "{$arg.wso2ei}/repository/deployment/server/eventpublishers/MessageFlowConfigurationPublisher.xml"
-    configurations:
-      - operation: replace
-        xpath: "to/property[@name=\"receiverURL\"]"
-        value: "tcp://172.28.128.5:7612"
-  # MessageFlowStatisticsPublisher.xml
-  - file_path: integrator-analytics/integrator/repository/deployment/server/eventpublishers/MessageFlowStatisticsPublisher.xml
-    file_type: xml
-    relative_path: "{$arg.wso2ei}/repository/deployment/server/eventpublishers/MessageFlowStatisticsPublisher.xml"
-    configurations:
-      - operation: replace
-        xpath: "to/property[@name=\"receiverURL\"]"
-        value: "tcp://172.28.128.5:7612"
-#-----------------------------------------------------------------
   # integrator-bps-analytics
   # analytics-dashboard - product_provisioner.sh
   - file_path: integrator-bps-analytics/analytics-dashboard/provisioner/product_provisioner.sh
@@ -228,10 +213,12 @@ files:
     relative_path: "{$arg.wso2ei}/wso2/business-process/bin/wso2server.sh"
     file_type: sh
     configurations:
-      - operation: add
-        xpath: "-Dorg.apache.cxf.io.CachedOutputStream.Threshold=104857600 \\"
-        value: "-Dhttpclient.hostnameVerifier=AllowAll \\\n
-                    -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \\"
+      - operation: "add"
+        xpath: "-Dorg.apache.cxf.io.CachedOutputStream.Threshold=104857600"
+        value: "    -Dhttpclient.hostnameVerifier=AllowAll \\\n"
+      - operation: "add"
+        xpath: "-Dhttpclient.hostnameVerifier=AllowAll"
+        value: "    -Dorg.opensaml.httpclient.https.disableHostnameVerification=true \\\n"
   # business-process - product_provisioner.sh
   - file_path: integrator-bps-analytics/business-process/provisioner/product_provisioner.sh
     relative_path: ~
@@ -468,7 +455,7 @@ files:
           |
           <mount path="/_system/config" overwrite="virtual">
             <instanceId>WSO2_REGISTRY_DB</instanceId>
-            <targetPath>/_system/business-process/config</targetPath>
+            <targetPath>/_system/integrator/config</targetPath>
           </mount>
       - operation: add
         xpath: "."
@@ -574,23 +561,6 @@ files:
               </configuration>
             </definition>
           </datasource>
-  # MessageFlowConfigurationPublisher.xml
-  - file_path: integrator-bps-analytics/integrator/repository/deployment/server/eventpublishers/MessageFlowConfigurationPublisher.xml
-    file_type: xml
-    relative_path: "{$arg.wso2ei}/repository/deployment/server/eventpublishers/MessageFlowConfigurationPublisher.xml"
-    configurations:
-      - operation: replace
-        xpath: "to/property[@name=\"receiverURL\"]"
-        value: "tcp://172.28.128.5:7612"
-  # MessageFlowStatisticsPublisher.xml
-  - file_path: integrator-bps-analytics/integrator/repository/deployment/server/eventpublishers/MessageFlowStatisticsPublisher.xml
-    file_type: xml
-    relative_path: "{$arg.wso2ei}/repository/deployment/server/eventpublishers/MessageFlowStatisticsPublisher.xml"
-    configurations:
-      - operation: replace
-        xpath: "to/property[@name=\"receiverURL\"]"
-        value: "tcp://172.28.128.5:7612"
-#-----------------------------------------------------------------
   # integrator-broker-analytics
   # analytics-dashboard - product_provisioner.sh
   - file_path: integrator-broker-analytics/analytics-dashboard/provisioner/product_provisioner.sh
@@ -700,7 +670,7 @@ files:
           |
           <mount path="/_system/config" overwrite="virtual">
             <instanceId>WSO2_REGISTRY_DB</instanceId>
-            <targetPath>/_system/business-process/config</targetPath>
+            <targetPath>/_system/config/broker</targetPath>
           </mount>
       - operation: add
         xpath: "."
@@ -799,10 +769,10 @@ files:
           <MgtHostName>172.28.128.7</MgtHostName>
       - operation: replace
         xpath: "Analytics/ServerURL"
-        value: "tcp://172.28.128.5:7612"
+        value: "tcp://172.28.128.4:7612"
       - operation: replace
         xpath: "Analytics/AuthServerURL"
-        value: "ssl://172.28.128.5:7712"
+        value: "ssl://172.28.128.4:7712"
   # registry.xml
   - file_path: integrator-broker-analytics/integrator/conf/registry.xml
     relative_path: "{$arg.wso2ei}/conf/registry.xml"
@@ -833,7 +803,7 @@ files:
           |
           <mount path="/_system/config" overwrite="virtual">
             <instanceId>WSO2_REGISTRY_DB</instanceId>
-            <targetPath>/_system/business-process/config</targetPath>
+            <targetPath>/_system/integrator/config</targetPath>
           </mount>
       - operation: add
         xpath: "."
@@ -886,6 +856,44 @@ files:
         value:
           |
           <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8243</parameter>
+      - operation: add
+        xpath: "."
+        value:
+            |
+         <transportReceiver name="jms" class="org.apache.axis2.transport.jms.JMSListener">
+          <parameter name="myTopicConnectionFactory" locked="false">
+            <parameter name="java.naming.factory.initial" locked="false">org.wso2.andes.jndi.PropertiesFileInitialContextFactory</parameter>
+            <parameter name="java.naming.provider.url" locked="false">conf/jndi.properties</parameter>
+            <parameter name="transport.jms.ConnectionFactoryJNDIName" locked="false">TopicConnectionFactory</parameter>
+            <parameter name="transport.jms.ConnectionFactoryType" locked="false">topic</parameter>
+          </parameter>
+          <parameter name="myQueueConnectionFactory" locked="false">
+           <parameter name="java.naming.factory.initial" locked="false">org.wso2.andes.jndi.PropertiesFileInitialContextFactory</parameter>
+           <parameter name="java.naming.provider.url" locked="false">conf/jndi.properties</parameter>
+           <parameter name="transport.jms.ConnectionFactoryJNDIName" locked="false">QueueConnectionFactory</parameter>
+           <parameter name="transport.jms.ConnectionFactoryType" locked="false">queue</parameter>
+          </parameter>
+          <parameter name="default" locked="false">
+            <parameter name="java.naming.factory.initial" locked="false">org.wso2.andes.jndi.PropertiesFileInitialContextFactory</parameter>
+            <parameter name="java.naming.provider.url" locked="false">conf/jndi.properties</parameter>
+            <parameter name="transport.jms.ConnectionFactoryJNDIName" locked="false">QueueConnectionFactory</parameter>
+            <parameter name="transport.jms.ConnectionFactoryType" locked="false">queue</parameter>
+          </parameter>
+         </transportReceiver>
+      - operation: add
+        xpath: "."
+        value: |
+          <transportSender name="jms" class="org.apache.axis2.transport.jms.JMSSender"/>
+  - file_path: "integrator-broker-analytics/integrator/conf/jndi.properties"
+    relative_path: "{$arg.wso2ei}/conf/jndi.properties"
+    file_type: "txt"
+    configurations:
+      - operation: replace_line
+        current_value: "connectionfactory.QueueConnectionFactory = amqp://admin:admin@clientID/carbon?brokerlist='tcp://localhost:5675'"
+        new_value: "connectionfactory.QueueConnectionFactory = amqp://admin:admin@clientID/carbon?brokerlist='tcp://172.28.128.5:5675?retries='5'&connectdelay='50''"
+      - operation: replace_line
+        current_value: "connectionfactory.TopicConnectionFactory = amqp://admin:admin@clientID/carbon?brokerlist='tcp://localhost:5675'"
+        new_value: "connectionfactory.TopicConnectionFactory = amqp://admin:admin@clientID/carbon?brokerlist='tcp://172.28.128.5:5675?retries='5'&connectdelay='50''"
   # master-datasources.xml
   - file_path: integrator-broker-analytics/integrator/conf/datasources/master-datasources.xml
     relative_path: "{$arg.wso2ei}/conf/datasources/master-datasources.xml"
@@ -939,19 +947,3 @@ files:
               </configuration>
             </definition>
           </datasource>
-  # MessageFlowConfigurationPublisher.xml
-  - file_path: integrator-broker-analytics/integrator/repository/deployment/server/eventpublishers/MessageFlowConfigurationPublisher.xml
-    file_type: xml
-    relative_path: "{$arg.wso2ei}/repository/deployment/server/eventpublishers/MessageFlowConfigurationPublisher.xml"
-    configurations:
-      - operation: replace
-        xpath: "to/property[@name=\"receiverURL\"]"
-        value: "tcp://172.28.128.5:7612"
-  # MessageFlowStatisticsPublisher.xml
-  - file_path: integrator-broker-analytics/integrator/repository/deployment/server/eventpublishers/MessageFlowStatisticsPublisher.xml
-    file_type: xml
-    relative_path: "{$arg.wso2ei}/repository/deployment/server/eventpublishers/MessageFlowStatisticsPublisher.xml"
-    configurations:
-      - operation: replace
-        xpath: "to/property[@name=\"receiverURL\"]"
-        value: "tcp://172.28.128.5:7612"
