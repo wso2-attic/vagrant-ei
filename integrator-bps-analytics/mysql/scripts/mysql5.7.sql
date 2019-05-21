@@ -2,6 +2,8 @@
 -- REGISTRY TABLES
 -- ################################
 
+SET GLOBAL max_connections = 1500;
+
 CREATE DATABASE `WSO2_REGISTRY_DB`;
 USE `WSO2_REGISTRY_DB`;
 
