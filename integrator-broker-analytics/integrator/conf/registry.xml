@@ -147,23 +147,4 @@
     <instanceId>WSO2_REGISTRY_DB</instanceId>
     <targetPath>/_system/governance</targetPath>
   </mount>
-  <dbConfig name="WSO2_REGISTRY_DB">
-    <dataSource>jdbc/WSO2_REGISTRY_DB</dataSource>
-  </dbConfig>
-  <remoteInstance url="https://localhost:8243/registry">
-    <id>WSO2_REGISTRY_DB</id>
-    <dbConfig>WSO2_REGISTRY_DB</dbConfig>
-    <readOnly>false</readOnly>
-    <registryRoot>/</registryRoot>
-    <enableCache>true</enableCache>
-    <cacheId>root@jdbc:mysql://172.28.128.3:3306/WSO2_REGISTRY_DB</cacheId>
-  </remoteInstance>
-  <mount path="/_system/config" overwrite="virtual">
-    <instanceId>WSO2_REGISTRY_DB</instanceId>
-    <targetPath>/_system/integrator/config</targetPath>
-  </mount>
-  <mount path="/_system/governance" overwrite="virtual">
-    <instanceId>WSO2_REGISTRY_DB</instanceId>
-    <targetPath>/_system/governance</targetPath>
-  </mount>
 </wso2registry>

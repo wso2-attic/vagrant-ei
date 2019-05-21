@@ -119,45 +119,5 @@
         </configuration>
       </definition>
     </datasource>
-    <datasource>
-      <name>WSO2_REGISTRY_DB</name>
-      <description>The datasource is used for registry metadata</description>
-      <jndiConfig>
-        <name>jdbc/WSO2_REGISTRY_DB</name>
-      </jndiConfig>
-      <definition type="RDBMS">
-        <configuration>
-          <url>jdbc:mysql://172.28.128.3:3306/WSO2_REGISTRY_DB?autoReconnect=true&amp;useSSL=false</url>
-          <username>root</username>
-          <password>wso2carbon</password>
-          <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
-          <maxActive>80</maxActive>
-          <maxWait>60000</maxWait>
-          <testOnBorrow>true</testOnBorrow>
-          <validationQuery>SELECT 1</validationQuery>
-          <validationInterval>30000</validationInterval>
-        </configuration>
-      </definition>
-    </datasource>
-    <datasource>
-      <name>WSO2_USER_DB</name>
-      <description>The datasource is used for user mangement and userstore</description>
-      <jndiConfig>
-        <name>jdbc/WSO2_USER_DB</name>
-      </jndiConfig>
-      <definition type="RDBMS">
-        <configuration>
-          <url>jdbc:mysql://172.28.128.3:3306/WSO2_USER_DB?autoReconnect=true&amp;useSSL=false</url>
-          <username>root</username>
-          <password>wso2carbon</password>
-          <driverClassName>com.mysql.cj.jdbc.Driver</driverClassName>
-          <maxActive>50</maxActive>
-          <maxWait>60000</maxWait>
-          <testOnBorrow>true</testOnBorrow>
-          <validationQuery>SELECT 1</validationQuery>
-          <validationInterval>30000</validationInterval>
-        </configuration>
-      </definition>
-    </datasource>
   </datasources>
 </datasources-configuration>
