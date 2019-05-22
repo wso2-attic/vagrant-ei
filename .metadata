@@ -249,7 +249,7 @@ files:
         xpath: "."
         value:
           |
-          <MgtHostName>172.28.128.7</MgtHostName>
+          <MgtHostName>172.28.128.6</MgtHostName>
   # registry.xml
   - file_path: integrator-bps-analytics/business-process/conf/registry.xml
     relative_path: "{$arg.wso2ei}/wso2/business-process/conf/registry.xml"
@@ -639,7 +639,7 @@ files:
         xpath: "."
         value:
           |
-          <MgtHostName>172.28.128.7</MgtHostName>
+          <MgtHostName>172.28.128.6</MgtHostName>
   # registry.xml
   - file_path: integrator-broker-analytics/broker/conf/registry.xml
     relative_path: "{$arg.wso2ei}/wso2/broker/conf/registry.xml"
