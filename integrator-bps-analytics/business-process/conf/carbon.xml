@@ -650,5 +650,5 @@
     <LoadAPIContextsInServerStartup>true</LoadAPIContextsInServerStartup>
   </APIManagement>
   <HostName>172.28.128.6</HostName>
-  <MgtHostName>172.28.128.7</MgtHostName>
+  <MgtHostName>172.28.128.6</MgtHostName>
 </Server>
