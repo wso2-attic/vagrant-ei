@@ -197,8 +197,6 @@
     <parameter name="httpGetProcessor" locked="false">org.wso2.carbon.mediation.transport.handlers.PassThroughNHttpGetProcessor</parameter>
     <!--<parameter name="priorityConfigFile" locked="false">location of priority configuration file</parameter>-->
     <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8280</parameter>
-    <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8280</parameter>
-    <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8280</parameter>
   </transportReceiver>
   <transportReceiver name="https" class="org.apache.synapse.transport.passthru.PassThroughHttpSSLListener">
     <parameter name="port" locked="false">8243</parameter>
@@ -224,8 +222,6 @@
     </parameter>
     <!--<parameter name="SSLVerifyClient">require</parameter>
             supports optional|require or defaults to none -->
-    <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8243</parameter>
-    <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8243</parameter>
     <parameter name="WSDLEPRPrefix" locked="false">http://172.28.128.7:8243</parameter>
   </transportReceiver>
   <transportReceiver name="local" class="org.wso2.carbon.core.transports.local.CarbonLocalTransportReceiver"/>
@@ -389,7 +385,7 @@
   <!--<transportSender name="mqtt" class="org.apache.axis2.transport.mqtt.MqttSender"/>-->
   <!--<transportSender name="ws" class="org.wso2.carbon.websocket.transport.WebsocketTransportSender">
         <parameter name="ws.outflow.dispatch.sequence" locked="false">outflowDispatchSeq</parameter>
-        <parameter name="ws.outflow.dispatch.fault.sequence" locked="false">outflowFaultSeq</parameter>       
+        <parameter name="ws.outflow.dispatch.fault.sequence" locked="false">outflowFaultSeq</parameter>
     </transportSender>-->
   <!--<transportSender name="wss" class="org.wso2.carbon.websocket.transport.WebsocketTransportSender">
         <parameter name="ws.outflow.dispatch.sequence" locked="false">outflowDispatchSeq</parameter>
@@ -516,7 +512,7 @@
   <!--                   Transactions                    -->
   <!-- ================================================= -->
   <!--
-        Uncomment and configure the following section to enable transactions support 
+        Uncomment and configure the following section to enable transactions support
     -->
   <!--<transaction timeout="30000">
         <parameter name="java.naming.factory.initial">org.apache.activemq.jndi.ActiveMQInitialContextFactory</parameter>
