@@ -39,7 +39,7 @@
        This is will become part of the End Point Reference of the
        services deployed on this server instance.
     -->
-  <HostName>localhost</HostName>
+  <HostName>172.28.128.6</HostName>
   <!--
     Host name to be used for the Carbon management console
     -->
@@ -649,6 +649,5 @@
 	</ExternalAPIManager-->
     <LoadAPIContextsInServerStartup>true</LoadAPIContextsInServerStartup>
   </APIManagement>
-  <HostName>172.28.128.6</HostName>
   <MgtHostName>172.28.128.6</MgtHostName>
 </Server>
