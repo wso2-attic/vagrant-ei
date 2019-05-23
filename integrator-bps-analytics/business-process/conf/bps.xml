@@ -147,7 +147,7 @@
         <!--<tns:ODESchedulerImmediateTransactionRetryInterval>1000</tns:ODESchedulerImmediateTransactionRetryInterval>-->
 
     <!-- End of Simple Scheduler related configuration -->
-    <!--</tns:ODESchedulerConfiguration>--> 
+    <!--</tns:ODESchedulerConfiguration>-->
 
     <!--Configurations for BPEL UI-->
     <tns:BpelUI>

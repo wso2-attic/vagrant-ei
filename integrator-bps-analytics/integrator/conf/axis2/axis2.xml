@@ -385,7 +385,7 @@
   <!--<transportSender name="mqtt" class="org.apache.axis2.transport.mqtt.MqttSender"/>-->
   <!--<transportSender name="ws" class="org.wso2.carbon.websocket.transport.WebsocketTransportSender">
         <parameter name="ws.outflow.dispatch.sequence" locked="false">outflowDispatchSeq</parameter>
-        <parameter name="ws.outflow.dispatch.fault.sequence" locked="false">outflowFaultSeq</parameter>
+        <parameter name="ws.outflow.dispatch.fault.sequence" locked="false">outflowFaultSeq</parameter>       
     </transportSender>-->
   <!--<transportSender name="wss" class="org.wso2.carbon.websocket.transport.WebsocketTransportSender">
         <parameter name="ws.outflow.dispatch.sequence" locked="false">outflowDispatchSeq</parameter>
@@ -512,7 +512,7 @@
   <!--                   Transactions                    -->
   <!-- ================================================= -->
   <!--
-        Uncomment and configure the following section to enable transactions support
+        Uncomment and configure the following section to enable transactions support 
     -->
   <!--<transaction timeout="30000">
         <parameter name="java.naming.factory.initial">org.apache.activemq.jndi.ActiveMQInitialContextFactory</parameter>
