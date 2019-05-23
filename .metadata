@@ -615,7 +615,7 @@ files:
         current_value: "{$arg.existing-version}"
         new_value: "{$arg.new-version}"
   # broker.xml
-  - file_path: iintegrator-broker-analytics/broker/conf/broker.xml
+  - file_path: integrator-broker-analytics/broker/conf/broker.xml
     relative_path: "{$arg.wso2ei}/wso2/broker/conf/broker.xml"
     file_type: xml
     configurations:
