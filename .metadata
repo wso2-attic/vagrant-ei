@@ -240,11 +240,9 @@ files:
     relative_path: "{$arg.wso2ei}/wso2/business-process/conf/carbon.xml"
     file_type: xml
     configurations:
-      - operation: add
-        xpath: "."
-        value:
-          |
-          <HostName>172.28.128.6</HostName>
+      - operation: replace
+        xpath: "HostName"
+        value: "172.28.128.6"
       - operation: add
         xpath: "."
         value:
@@ -308,7 +306,7 @@ files:
     configurations:
       - operation: replace
         xpath: "datasources/datasource/definition/configuration/url"
-        value: "jdbc:mysql://172.28.128.3:3306/WSO2_ACTIVITY_DB?autoReconnect=true&amp;useSSL=false"
+        value: "jdbc:mysql://172.28.128.3:3306/WSO2_ACTIVITY_DB?autoReconnect=true&useSSL=false"
       - operation: replace
         xpath: "datasources/datasource/definition/configuration/username"
         value: "root"
@@ -322,7 +320,7 @@ files:
     configurations:
       - operation: replace
         xpath: "datasources/datasource/definition/configuration/url"
-        value: "jdbc:mysql://172.28.128.3:3306/WSO2_BUSINESS_PROCESS_DB?autoReconnect=true&amp;useSSL=false"
+        value: "jdbc:mysql://172.28.128.3:3306/WSO2_BUSINESS_PROCESS_DB?autoReconnect=true&useSSL=false"
       - operation: replace
         xpath: "datasources/datasource/definition/configuration/username"
         value: "root"
