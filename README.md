@@ -1,4 +1,4 @@
-# Vagrantfile for WSO2 Enterprise Integrator
+# [DEPRECATED] Vagrantfile for WSO2 Enterprise Integrator
 
 In order to use Vagrant boxes, you will need an active subscription from WSO2 since the Vagrant boxes hosted at vagrant.wso2.com contains the latest updates and fixes to WSO2 Enterprise Integrator. You can sign up for a Free Trial Subscription [here](https://wso2.com/free-trial-subscription).
 
